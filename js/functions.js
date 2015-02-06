@@ -5,6 +5,7 @@ function inicio ()
 	$("#foros").on("click", redirectForos);
 	$("#message").on("click", redirectMensajes);
 	$("#redact").on("click", redirectRedact);
+	$("#mensaje1").on("click", redirectMensaje1);
 }
 
 
@@ -48,6 +49,10 @@ function redirectRedact ()
 	$("#redact").addClass('active');
 	$("#foros").removeClass('active');
 	$("#message").removeClass('active');
+}
+function redirectMensaje1()
+{
+	$("#content").load("visor-mensaje.php");
 }
 
 

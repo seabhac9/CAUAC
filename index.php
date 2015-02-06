@@ -15,6 +15,7 @@
 
         <form class="form-horizontal indexform" action="classes/control.php" method="POST">      
             <?php
+<<<<<<< HEAD
                 if (isset($_GET["errorusuario"])){
                     if ($_GET["errorusuario"]=="si"){
                         echo '<b>Datos incorrectos</b>';
@@ -24,6 +25,29 @@
                         echo '<b>Esperando datos</b>';
                     }
                 }
+=======
+            if (isset($_GET["errorusuario"])){
+            if ($_GET["errorusuario"]=="si"){
+            echo '<b>Datos incorrectos</b>';
+            }
+                else {
+                    echo "esperando datos";
+                }
+            }
+            if (isset($_GET["userExist"])){
+            if ($_GET["userExist"]=="si")
+                {
+            echo '<b>El usuario ya existe</b>';
+            }
+            else{
+                echo '<b>Registro satisfactorio, por favor ingrese con sus datos.</b>';
+            } 
+            }          
+            //     else
+            //     {
+            // echo '<b>Esperando datos</b>';
+            // }
+>>>>>>> 432ad8470feb6d6e2dbe494d20055ab577871c37
             ?>   
 
             <div class="form-group">

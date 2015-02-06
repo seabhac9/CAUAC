@@ -1,0 +1,22 @@
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `cedula` int(11) NOT NULL COMMENT 'Cedula',
+  `nombres` varchar(50) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombres',
+  `apellidos` varchar(50) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Apellidos',
+  `usuario` varchar(30) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Usuario',
+  `clave` varchar(20) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Clave',
+  `rol` smallint(6) NOT NULL COMMENT 'Rol',
+  `empresa` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Empresa'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabla de usuarios';
+
+
+
+
+
+INSERT INTO `usuarios` (`cedula`, `nombres`, `apellidos`, `usuario`, `clave`, `rol`, `empresa`) VALUES
+(123, 'camilo', 'rodriguez', 'camilo', '123', 1, 'bla');
+
+
+ALTER TABLE `usuarios`
+ ADD PRIMARY KEY (`cedula`);
+

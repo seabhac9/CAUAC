@@ -1,8 +1,21 @@
 <h2 class="orange">Mensajes</h2>
-
 <ul>
-<li><h3><a href="visor-mensaje.php">Mensaje 1</a></h3></li>
-<li><h3><a>Mensaje 2</a></h3></li>
-<li><h3><a>Mensaje 3</a></h3></li>
-<li><h3><a>Mensaje 4</a></h3></li>
+	<?php 
+		include("classes/seguridad.php");
+		require_once('classes/conexionDB.php');
+		//error_reporting(E_ALL);
+
+		$conn = new ConexionDB;
+		$conn->conectarDB();
+
+		$cedula = $_SESSION["cedula"];
+
+		$sql = "SELECT * FROM mensajes WHERE receptor = $cedula";
+		$retval = mysql_query( $sql, $conn->getConexionDB() );
+		
+		while($row = mysql_fetch_assoc($retval))
+		{
+			echo "<li><h3><a>" . $row['titulo'] . "</a></h3></li>";
+		}
+	?>
 </ul>

@@ -46,7 +46,16 @@ audio:not([controls]) {
 
 /*estilo definido por el usuario*/
 body{
-  min-height: 400px;
+  min-height: 600px;
+}
+nav ul li a{
+  cursor: pointer;
+}
+#content ul li{ 
+  list-style: none;
+}
+#content ul li h3 a{
+  cursor: pointer;
 }
 
 #menu{
@@ -62,7 +71,7 @@ body{
 }
 
 .orange{
-  color:orange;
+  color:#FF8000;
 }
 
 /* fin de estilo definido por el usuario*/

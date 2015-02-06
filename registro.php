@@ -24,8 +24,8 @@
                 <input type="text" class="form-control" id="lastName" name="lastName" required="required" placeholder="Apellidos">
               </div>
               <div class="form-group">                
-                <label for="cedula">Cedula</label>
-                <input type="text" class="form-control" id="cedula" name="cedula" required="required" placeholder="cedula">
+                <label for="cedula">Cédula</label>
+                <input type="text" class="form-control" id="cedula" name="cedula" required="required" placeholder="Cédula">
               </div>
               <div class="form-group">                
                 <label for="bussines">Empresa</label>

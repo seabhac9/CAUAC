@@ -19,11 +19,19 @@
             if ($_GET["errorusuario"]=="si"){
             echo '<b>Datos incorrectos</b>';
             }
-                else
+                else {
+                    echo "esperando datos";
+                }
+            }
+            if (isset($_GET["userExist"])){
+            if ($_GET["userExist"]=="si")
                 {
-            echo '<b>Esperando datos</b>';
+            echo '<b>El usuario ya existe</b>';
             }
-            }
+            else{
+                echo '<b>Registro satisfactorio, por favor ingrese con sus datos.</b>';
+            } 
+            }          
             //     else
             //     {
             // echo '<b>Esperando datos</b>';

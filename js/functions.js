@@ -3,6 +3,8 @@ function inicio ()
 {
 	//Aqui va todo el codigo relacionado con DOM
 	$("#foros").on("click", redirectForos);
+	$("#message").on("click", redirectMensajes);
+	$("#redact").on("click", redirectRedact);
 }
 
 
@@ -26,12 +28,30 @@ function redirectForos ()
 	// $("#historia").css(cambiosCSS);
 	// $("#personalizacion").css(cambiosPersonalizacion);
 	// $("#color div").on("click", cambiarColor);
-     $("#content").load("foros.html")
+     $("#content").load("foros.php")
      //$("#headerPrint").removeClass('invisible');
 	 $("#foros").addClass('active');
-
+	 $("#redact").removeClass('active');
+	 $("#message").removeClass('active');
 
 }
+function redirectMensajes () 
+{
+	$("#content").load("mensajes.php")
+	$("#message").addClass('active');
+	$("#foros").removeClass('active');
+	$("#redact").removeClass('active');
+}
+function redirectRedact () 
+{
+	$("#content").load("redactar.php");
+	$("#redact").addClass('active');
+	$("#foros").removeClass('active');
+	$("#message").removeClass('active');
+}
+
+
+
 function cambiarColor (datos) 
 {
 	var colorito = datos.currentTarget.id;

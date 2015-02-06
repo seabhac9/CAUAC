@@ -21,6 +21,7 @@ include("classes/seguridad.php");
           <li role="presentation"  id="foros"><a>Foros</a></li>
           <li role="presentation" id="message"><a>Mensajes</a></li>
           <li role="presentation" id="redact"><a>Redactar</a></li>
+          <li role="presentation" id="exit"><a>Salir</a></li>
         </ul>
         </nav>
         </div>

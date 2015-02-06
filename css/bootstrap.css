@@ -65,6 +65,9 @@ nav ul li a{
   width:80%;
   margin: 0 10%;
 }
+.redactMenu{
+    margin-bottom: 1em;
+  }
 .img_login{
   width: 80%;
   margin-left: 9%;
@@ -1363,6 +1366,7 @@ p {
     width: 100%;
     margin: 0;
   }
+
   .indexform{
     background: white;
     padding:3em;
@@ -3951,7 +3955,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: -1px;
 }
 .nav {
-  margin-bottom: 0;
+  /*margin-bottom: 0;*/
   padding-left: 0;
   list-style: none;
 }

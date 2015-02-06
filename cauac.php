@@ -1,5 +1,6 @@
 <?php
 include("classes/seguridad.php");
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +27,7 @@ include("classes/seguridad.php");
         </nav>
         </div>
         <div id="content">
-            <h2 class="orange">Bienvenido Usuario</h2>
+            <h2 class="orange">Bienvenido, <?php echo $_SESSION["nombres"] . ' ' . $_SESSION["apellidos"]; ?></h2>
         </div>
     </body>
 </html>

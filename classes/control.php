@@ -7,8 +7,8 @@
 
 	$user = $_POST["user"];
 	$pass = $_POST["pass"];
-	
-	$sql = "SELECT nombres, apellidos, rol FROM usuarios WHERE usuario = '$user' and clave = '$pass'";
+
+	$sql = "SELECT cedula, nombres, apellidos, rol FROM usuarios WHERE usuario = '$user' and clave = '$pass'";
 	$retval = mysql_query( $sql, $conn->getConexionDB() );
 	$row = mysql_fetch_assoc($retval);
 
@@ -18,6 +18,10 @@
 	    //defino una sesion y guardo datos
 	    session_start();
 	    $_SESSION["autentificado"]= "SI";
+	    $_SESSION["cedula"] = $row["cedula"];
+	    $_SESSION["nombres"] = $row["nombres"];
+	    $_SESSION["apellidos"] = $row["apellidos"];
+	    $_SESSION["rol"] = $row["rol"];
 	    header ("Location: ../cauac.php");
 	}else {
 	    //si no existe le mando otra vez a la portada

@@ -1346,6 +1346,11 @@ p {
     padding-top: 5em;
     min-height: 600px;
   }
+  #register_content{    
+    background:#dcddd7;
+    padding-top: 5em;
+    min-height: 900px;
+  }
 
   #menu{
     background:#dcddd7;

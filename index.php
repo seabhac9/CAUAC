@@ -40,7 +40,9 @@
     <input type="password" class="form-control" id="pass" name="pass" required="required" placeholder="Clave">
   </div>  
   <button type="submit" class="btn btn-primary">Ingresar</button>
+  <a href="registro.php">Registrarse</a>
 </form>
+
 </div>
             </body>
 </html>

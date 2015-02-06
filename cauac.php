@@ -8,6 +8,8 @@ include("classes/seguridad.php");
     <link href="css/bootstrap.css" rel="stylesheet" />
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/prefix.js"></script>
+    <script src="js/functions.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
@@ -16,9 +18,9 @@ include("classes/seguridad.php");
        <img src="img/cauac.jpg">  
     <nav>    
         <ul class="nav nav-pills nav-stacked"> 
-          <li role="presentation" class="active"><a href="#">Foros</a></li>
-          <li role="presentation"><a href="#">Mensajes</a></li>
-          <li role="presentation"><a href="#">Redactar</a></li>
+          <li role="presentation"  id="foros"><a>Foros</a></li>
+          <li role="presentation" id="message"><a>Mensajes</a></li>
+          <li role="presentation" id="redact"><a>Redactar</a></li>
         </ul>
         </nav>
         </div>

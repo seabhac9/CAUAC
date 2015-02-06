@@ -19,7 +19,7 @@
 	//validacion que no se cree el mismo loggin de usuario.
 	if(mysql_num_rows($retval) > 0)
 	{
-		echo "El nombre de usuario ya existe. Seleccionar otro" ;
+		header("Location: ../index.php?userExist=si");
 	}
 	else
 	{
@@ -27,7 +27,7 @@
 					"VALUES ($cedula, '$nombres', '$apellidos', '$usuario', '$clave', 0, '$empresa');";
 		$retval = mysql_query( $sql, $conn->getConexionDB() );
 		
-		echo "Registro satisfactorio!";
+		header("Location: ../index.php?userExist=no");
 	}
 
 	$conn->desconectarDB();

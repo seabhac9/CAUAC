@@ -23,15 +23,7 @@
                     {
                         echo '<b>Esperando datos</b>';
                     }
-                }
-            if (isset($_GET["errorusuario"])){
-            if ($_GET["errorusuario"]=="si"){
-            echo '<b>Datos incorrectos</b>';
-            }
-                else {
-                    echo "esperando datos";
-                }
-            }
+                }            
             if (isset($_GET["userExist"])){
             if ($_GET["userExist"]=="si")
                 {

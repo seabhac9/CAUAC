@@ -15,7 +15,7 @@
 		
 		while($row = mysql_fetch_assoc($retval))
 		{
-			echo "<li><h3><a href='visorMensaje.php'>" . $row['titulo'] . "</a></h3></li>";
+			echo "<li><h3><a onClick='redirectMensaje(" . $row['codigo'] .  ")'>" . $row['titulo'] . "</a></h3></li>";
 		}
 	?>
 </ul>

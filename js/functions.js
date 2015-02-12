@@ -1,36 +1,18 @@
 $(document).on("ready", inicio);
+
 function inicio () 
 {
 	//Aqui va todo el codigo relacionado con DOM
 	$("#foros").on("click", redirectForos);
 	$("#message").on("click", redirectMensajes);
 	$("#redact").on("click", redirectRedact);
-	$("#mensaje1").on("click", redirectMensaje1);
+
+	// $("#mensajes").on("click", redirectMensajes);
 }
-
-
 
 function redirectForos () 
 {
-	// //JSON
-	// var cambiosCSS =
-	// {
-	// 	margin: 0,
-	// 	overflow: "hidden",
-	// 	padding: 0,
-	// 	width: 0
-	// };
-	// var cambiosPersonalizacion =
-	// {
-	// 	height: "auto",
-	// 	opacity: 1,
-	// 	width: "40%"
-	// };
-	// $("#historia").css(cambiosCSS);
-	// $("#personalizacion").css(cambiosPersonalizacion);
-	// $("#color div").on("click", cambiarColor);
-     $("#content").load("foros.php")
-     //$("#headerPrint").removeClass('invisible');
+	 $("#content").load("foros.php")    
 	 $("#foros").addClass('active');
 	 $("#redact").removeClass('active');
 	 $("#message").removeClass('active');
@@ -50,16 +32,51 @@ function redirectRedact ()
 	$("#foros").removeClass('active');
 	$("#message").removeClass('active');
 }
-function redirectMensaje1()
+function redirectMensaje(codigo)
 {
-	$("#content").load("visor-mensaje.php");
+	$("#content").load("visorMensaje.php?codigo=" + codigo);
 }
 
-
+function redirectResponder(codigo)
+{
+	$("#content").load("respuesta.php?respuesta=" + codigo);
+}
 
 function cambiarColor (datos) 
 {
 	var colorito = datos.currentTarget.id;
 	var nuevoCoche = "c" + colorito + ".jpg";
 	$("#cochecito img").attr("src", nuevoCoche);
+}
+
+
+function cambiarFiltros1 (consulta) {
+    consulta.cons ="getFiltrosTodos1";
+    $.ajax({
+        url: 'WebService.php',
+        type: "GET",
+        data: consulta,
+        success: llenarFiltros1
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function vacio (){
+	// //JSON
+	// var cambiosCSS =
+	// {
+	// 	margin: 0,
+	// 	overflow: "hidden",
+	// 	padding: 0,
+	// 	width: 0
+	// };
+	// var cambiosPersonalizacion =
+	// {
+	// 	height: "auto",
+	// 	opacity: 1,
+	// 	width: "40%"
+	// };
+	// $("#historia").css(cambiosCSS);
+	// $("#personalizacion").css(cambiosPersonalizacion);
+	// $("#color div").on("click", cambiarColor);
 }

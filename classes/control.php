@@ -1,5 +1,7 @@
 ﻿<?php
-	require_once('conexionDB.php');
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+	require_once('ConexionDB.php');
 	//error_reporting(E_ALL);
 
 	$conn = new ConexionDB;
@@ -27,4 +29,4 @@
 	    //si no existe le mando otra vez a la portada
 	    header("Location: ../index.php?errorusuario=si");
 	}
-?> 
+?>

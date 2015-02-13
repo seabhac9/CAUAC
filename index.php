@@ -15,23 +15,29 @@
 
         <form class="form-horizontal indexform" action="classes/control.php" method="POST">      
             <?php
-                if (isset($_GET["errorusuario"])){
-                    if ($_GET["errorusuario"]=="si"){
-                        echo '<b>Datos incorrectos</b>';
-                    }
-                    else
-                    {
-                        echo '<b>Esperando datos</b>';
-                    }
-                }            
-            if (isset($_GET["userExist"])){
-            if ($_GET["userExist"]=="si")
-                {
-            echo '<b>El usuario ya existe</b>';
+            if(isset($_POST['cerrar']))
+            {
+                session_destroy();
+                header("location:/index.php");
             }
-            else{
-                echo '<b>Registro satisfactorio, por favor ingrese con sus datos.</b>';
-            } 
+
+            if (isset($_GET["errorusuario"])){
+                if ($_GET["errorusuario"]=="si"){
+                    echo '<b>Datos incorrectos</b>';
+                }
+                else
+                {
+                    echo '<b>Esperando datos</b>';
+                }
+            }            
+            if (isset($_GET["userExist"])){
+                if ($_GET["userExist"]=="si")
+                    {
+                echo '<b>El usuario ya existe</b>';
+                }
+                else{
+                    echo '<b>Registro satisfactorio, por favor ingrese con sus datos.</b>';
+                } 
             }          
             //     else
             //     {

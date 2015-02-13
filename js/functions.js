@@ -6,6 +6,7 @@ function inicio ()
 	$("#foros").on("click", redirectForos);
 	$("#message").on("click", redirectMensajes);
 	$("#redact").on("click", redirectRedact);
+	$("#exit").on("click", redirectExit);
 
 	// $("#mensajes").on("click", redirectMensajes);
 }
@@ -32,6 +33,12 @@ function redirectRedact ()
 	$("#foros").removeClass('active');
 	$("#message").removeClass('active');
 }
+
+function redirectExit()
+{
+	window.location.href="index.php?cerrar=1";
+}
+
 function redirectMensaje(codigo)
 {
 	$("#content").load("visorMensaje.php?codigo=" + codigo);

@@ -55,7 +55,11 @@ nav ul li a{
   list-style: none;
 }
 #content ul li h3 a{
+  text-transform: capitalize;
   cursor: pointer;
+}
+#content ul li h3 a:hover{
+  text-decoration: none;
 }
 
 #menu{
@@ -74,6 +78,7 @@ nav ul li a{
 }
 
 .orange{
+  text-transform: capitalize;
   color:#FF8000;
 }
 

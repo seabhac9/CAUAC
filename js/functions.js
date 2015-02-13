@@ -49,6 +49,35 @@ function cambiarColor (datos)
 	$("#cochecito img").attr("src", nuevoCoche);
 }
 
+function limpiarMensajeRedaccion()
+{
+	$("#titleRedact").val("");
+	$("#messageRedact").val("");
+}
+
+function enviarMensaje(emisor)
+{
+	var consulta = {"funcion": "EnviarMensajeDB"}; 
+	consulta.emisor = emisor;
+	consulta.receptor = $("#selectUser").val();
+	consulta.titulo =  $("#titleRedact").val();
+	consulta.contenido = $("#messageRedact").val();
+
+    $.ajax({
+        url: 'classes/WebService.php',
+        type: "GET",
+        data: consulta,
+        success: finEnvioMensaje
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function finEnvioMensaje(datos)
+{
+	alert("Mensaje enviado correctamente.");
+	redirectMensajes();
+}
+
 function enviarRespuesta(emisor, receptor, titulo)
 {
 	var consulta = {"funcion": "EnviarRespuestaDB"}; 

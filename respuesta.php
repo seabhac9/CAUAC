@@ -15,6 +15,6 @@
   ?>
     <h2 class="orange"> Responder a <?php echo $row['titulo']?></h2>
 		<ul class="redactMenu nav nav-pills ">  
-		  <li role="presentation"><a href="#">Responder</a></li>		  
+		  <li role="presentation"><a onClick="enviarRespuesta('a','sw');">Responder</a></li>		  
 		</ul>
-		<textarea class="form-control" rows="15"></textarea>
+		<textarea id="txtRespuesta" class="form-control" rows="15"></textarea>

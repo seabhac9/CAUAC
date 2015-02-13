@@ -49,6 +49,22 @@ function cambiarColor (datos)
 	$("#cochecito img").attr("src", nuevoCoche);
 }
 
+function enviarRespuesta(emisor, receptor)
+{
+	var consulta.cons ="enviarRespuestaDB";
+	consulta.envia = emisor;
+	consulta.recibe = receptor;
+	consulta.respuesta = $("#txtRespuesta").val();
+
+	alert(consulta.envia + consulta.receptor + consulta.respuesta);
+    // $.ajax({
+    //     url: 'WebService.php',
+    //     type: "GET",
+    //     data: consulta,
+    //     success: llenarFiltros1
+    // })
+    // .fail(function(err) { console.log( err ); });
+}
 
 function cambiarFiltros1 (consulta) {
     consulta.cons ="getFiltrosTodos1";

@@ -15,10 +15,11 @@
 
         <form class="form-horizontal indexform" action="classes/control.php" method="POST">      
             <?php
-            if(isset($_POST['cerrar']))
+            if(isset($_GET['cerrar']))
             {
+                session_start();
                 session_destroy();
-                header("location:/index.php");
+                header("location: index.php");
             }
 
             if (isset($_GET["errorusuario"])){

@@ -51,7 +51,7 @@ function cambiarColor (datos)
 
 function enviarRespuesta(emisor, receptor)
 {
-	var consulta.cons ="enviarRespuestaDB";
+	var consulta = {"cons": "enviarRespuestaDB"}; 
 	consulta.envia = emisor;
 	consulta.recibe = receptor;
 	consulta.respuesta = $("#txtRespuesta").val();

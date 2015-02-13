@@ -5,5 +5,6 @@
 </ul>
 
 <form>
-	<textarea class="form-control" rows="15"></textarea>
+	<input type="text" name="titleRedact" class="form-control" placeholder="Titulo"><br/>
+	<textarea class="form-control" name="messageRedact" rows="15" placeholder="Mensaje"></textarea>
 </form>

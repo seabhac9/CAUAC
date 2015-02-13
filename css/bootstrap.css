@@ -51,6 +51,9 @@ body{
 nav ul li a{
   cursor: pointer;
 }
+#content{
+  padding-right:0.5em; 
+}
 #content ul li{ 
   list-style: none;
 }
@@ -75,6 +78,9 @@ nav ul li a{
 .img_login{
   width: 80%;
   margin-left: 9%;
+}
+.right{
+  float:right;
 }
 
 .orange{

@@ -41,6 +41,10 @@ function redirectResponder(codigo)
 {
 	$("#content").load("respuesta.php?respuesta=" + codigo);
 }
+function redirectCreaforo()
+{
+	$("#content").load("crearforo.php");
+}
 
 function cambiarColor (datos) 
 {

@@ -1,6 +1,6 @@
 <h2 class="orange">Foros</h2>
 <ul class="nav nav-pills ">
-<li role="presentation"><a href="#">Crear Foro</a></li> 
+<li role="presentation"><a onclick="redirectCreaforo()">Crear Foro</a></li> 
 </ul>
 
 <ul>

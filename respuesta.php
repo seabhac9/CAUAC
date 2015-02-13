@@ -13,7 +13,7 @@
     $row = mysql_fetch_assoc($retval);    
     
   ?>
-    <h2 class="orange"> Responder a <?php echo $row['titulo']?></h2>
+    <h2 class="orange"> Responder <?php echo $row['titulo']?></h2>
 		<ul class="redactMenu nav nav-pills ">  
 		  <li role="presentation"><a onClick="enviarRespuesta('a','sw');">Responder</a></li>		  
 		</ul>

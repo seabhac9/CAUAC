@@ -49,21 +49,47 @@ function cambiarColor (datos)
 	$("#cochecito img").attr("src", nuevoCoche);
 }
 
-function enviarRespuesta(emisor, receptor)
+function enviarRespuesta(emisor, receptor, titulo)
 {
-	var consulta = {"cons": "enviarRespuestaDB"}; 
-	consulta.envia = emisor;
-	consulta.recibe = receptor;
+	var consulta = {"funcion": "EnviarRespuestaDB"}; 
+	consulta.emisor = emisor;
+	consulta.receptor = receptor;
+	consulta.titulo = "RE:" + titulo;
 	consulta.respuesta = $("#txtRespuesta").val();
 
-	alert(consulta.envia + consulta.receptor + consulta.respuesta);
-    // $.ajax({
-    //     url: 'WebService.php',
-    //     type: "GET",
-    //     data: consulta,
-    //     success: llenarFiltros1
-    // })
-    // .fail(function(err) { console.log( err ); });
+    $.ajax({
+        url: 'classes/WebService.php',
+        type: "GET",
+        data: consulta,
+        success: finEnvioRespuesta
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function finEnvioRespuesta(datos)
+{
+	alert("Mensaje enviado correctamente!");
+	redirectMensajes();
+}
+
+function eliminarMensaje(codigoMensaje)
+{
+	var consulta = {"funcion": "EliminarMensajeDB"}; 
+	consulta.codigoMensaje = codigoMensaje;
+
+	$.ajax({
+        url: 'classes/WebService.php',
+        type: "GET",
+        data: consulta,
+        success: fineliminarMensaje
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function fineliminarMensaje(datos)
+{
+	alert("Mensaje eliminado!");
+	redirectMensajes();
 }
 
 function cambiarFiltros1 (consulta) {

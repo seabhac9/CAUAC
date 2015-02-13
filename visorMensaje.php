@@ -15,8 +15,8 @@
   ?>
     <h2 class="orange"><?php echo $row['titulo']?></h2>
 		<ul class="redactMenu nav nav-pills ">  
-		  <?php echo "<li role='presentation'><a onClick='redirectResponder(" . $row['codigo'] .  ")'>Responder</a></li>"; ?>
-		  <li role="presentation"><a href="#">Eliminar</a></li>  
+		  <li role='presentation'><a onClick="redirectResponder(<?php echo $row['codigo'] ?>);">Responder</a></li>
+		  <li role='presentation'><a onClick="eliminarMensaje(<?php echo $row['codigo'] ?>); " >Eliminar</a></li>  
 		</ul>		
 	<p><?php echo $row['contenido'] ?></p>   
 

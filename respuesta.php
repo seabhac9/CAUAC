@@ -12,9 +12,10 @@
     $retval = mysql_query( $sql, $conn->getConexionDB() );
     $row = mysql_fetch_assoc($retval);    
     
+    $conn->desconectarDB();
   ?>
     <h2 class="orange"> Responder <?php echo $row['titulo']?></h2>
 		<ul class="redactMenu nav nav-pills ">  
-		  <li role="presentation"><a onClick="enviarRespuesta('a','sw');">Responder</a></li>		  
+		  <li role="presentation"><a onClick="enviarRespuesta('<?php echo $row['emisor']?>','<?php echo $row['receptor']?>','<?php echo $row['titulo']?>');">Responder</a></li> 
 		</ul>
 		<textarea id="txtRespuesta" class="form-control" rows="15"></textarea>

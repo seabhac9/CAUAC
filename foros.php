@@ -14,12 +14,12 @@
 
 		$cedula = $_SESSION["cedula"];
 
-		$sql = "SELECT * FROM mensajes WHERE receptor = $cedula";
+		$sql = "SELECT * FROM foros;";
 		$retval = mysql_query( $sql, $conn->getConexionDB() );
 		
 		while($row = mysql_fetch_assoc($retval))
 		{
-			echo "<li><h3><a onClick='redirectMensaje(" . $row['codigo'] .  ")'>" . $row['titulo'] . "</a><div class='right'><a>Ver Mas&nbsp;&nbsp;</a><a class='orange'>Eliminar&nbsp;&nbsp;</a><a class='orange'>Editar&nbsp;&nbsp;</a></div></h3></li>";
+			echo "<li><h3><a>" . $row['titulo'] . "</a><div class='right'><a>Ver Mas&nbsp;&nbsp;</a><a class='orange'>Eliminar&nbsp;&nbsp;</a><a class='orange'>Editar&nbsp;&nbsp;</a></div></h3></li>";
 		}
 	?>
 </ul>

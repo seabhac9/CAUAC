@@ -50,7 +50,29 @@ function redirectResponder(codigo)
 }
 function redirectCreaforo()
 {
-	$("#content").load("crearforo.php");
+	$("#content").load("crearforo.php", function() {
+  		var fileSelect = document.getElementById("fileSelect"),
+		  fileElem = document.getElementById("fileElem");
+
+		fileSelect.addEventListener("click", function (e) {
+		    if (fileElem) {
+		        fileElem.click();
+		    }
+		    e.preventDefault(); // evitar la navegación a "#"
+		}, false);
+
+	});
+}
+
+function handleFile(file){
+	var fileList = document.getElementById("fileList");
+
+	if (!file.length) {
+    	fileList.innerHTML = "¡No se han seleccionado archivos!";
+    }
+    else{
+    	fileList.innerHTML = file[0].name;
+    }
 }
 
 function cambiarColor (datos) 
@@ -141,6 +163,54 @@ function cambiarFiltros1 (consulta) {
         success: llenarFiltros1
     })
     .fail(function(err) { console.log( err ); });
+}
+
+function publicarForo()
+{
+	//Enviar archivos usando ajax.
+	$( '#foroForm' )
+	.submit( function( e ) {
+		$.ajax( {
+		  url: 'classes/uploads.php',
+		  type: 'POST',
+		  data: new FormData( this ),
+		  processData: false,
+		  contentType: false,
+		  success: subirArchivo
+		} );
+		e.preventDefault();
+	} );
+
+    
+}
+
+function subirArchivo(datos){
+	datos = eval(datos);
+	var consulta = {"funcion": "PublicarForoDB"}; 
+	consulta.titulo =  $("#titleForo").val();
+	consulta.contenido = $("#textForo").val();
+	consulta.archivo = datos[0].resp;
+	consulta.usuariosPermitidos = "";
+
+	$('#users input:checked').each(function() {
+	    consulta.usuariosPermitidos += $(this).val() + ",";
+	});
+
+	consulta.usuariosPermitidos = consulta.usuariosPermitidos.substr(0, consulta.usuariosPermitidos.length-1);
+
+	$.ajax({
+        url: 'classes/WebService.php',
+        type: "GET",
+        data: consulta,
+        success: finPublicarForo
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function finPublicarForo(datos)
+{
+	alert("Se ha publicado correctamente el foro!");
+	redirectForos();
 }
 
 function vacio (){

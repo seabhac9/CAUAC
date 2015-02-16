@@ -22,6 +22,9 @@ if(!is_null($funcion))
 		case 'EnviarMensajeDB':
 			$result = EnviarMensajeDB($conn);
 		break;
+		case 'PublicarForoDB':
+			$result = PublicarForoDB($conn);
+		break;
   	}
   	
   	$conn->desconectarDB();
@@ -87,6 +90,32 @@ function EnviarMensajeDB($conn)
 		$retvalIn = mysql_query( $sqlIn, $conn->getConexionDB() );
 	}
 	
+	$result[] = array(
+	"resp" => $retvalIn
+	);
+}
+
+function PublicarForoDB($conn)
+{
+	$result = array();
+	$titulo = $_GET["titulo"];
+	$contenido = $_GET["contenido"];
+	$archivo = $_GET["archivo"];
+	$usuariosPermitidos = $_GET["usuariosPermitidos"];
+	$codigosUsuarios = explode(',', $usuariosPermitidos);
+
+	$sqlIns = "INSERT INTO foros VALUES (DEFAULT, '$titulo', '$contenido', '$archivo')";
+	$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+
+	$sql = "SELECT codigo FROM foros ORDER BY codigo DESC LIMIT 0, 1";
+	$retval = mysql_query( $sql, $conn->getConexionDB() );
+	$row = mysql_fetch_assoc($retval);
+
+	for ($i = 0; $i < count($codigosUsuarios); $i++) {
+    	$sqlIns = "INSERT INTO foro_usuarios VALUES (DEFAULT, " . $row['codigo'] . "," . $codigosUsuarios[$i] . ")";
+		$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+	}
+
 	$result[] = array(
 	"resp" => $retvalIn
 	);

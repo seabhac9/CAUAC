@@ -75,6 +75,11 @@ function handleFile(file){
     }
 }
 
+function redirectForoVer(codigo)
+{
+	$("#content").load("visorForo.php?codigo=" + codigo);
+}
+
 function cambiarColor (datos) 
 {
 	var colorito = datos.currentTarget.id;

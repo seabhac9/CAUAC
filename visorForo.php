@@ -30,5 +30,3 @@
     <button type="submit" class="btn btn-primary" onClick="comentarForo();">Comentar</button>
     <button type="button" class="btn btn-warning">Limpiar</button>  	
 	
-
-<!-- ```~~~^~`^~^^~`` -->

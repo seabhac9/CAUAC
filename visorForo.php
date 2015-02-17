@@ -6,12 +6,15 @@
     $conn = new ConexionDB;
     $conn->conectarDB();
 
-    // $cedula = $_SESSION["cedula"];
+    $cedula = $_SESSION["cedula"];
     $codigo = $_GET["codigo"];
     $sql = "SELECT * FROM foros WHERE codigo = $codigo" ;
     $retval = mysql_query( $sql, $conn->getConexionDB() );
     $row = mysql_fetch_assoc($retval);    
     
+    $sqlComentarios = "SELECT concat(u.nombres, ' ', apellidos) as nombre, fm.contenido as contenido FROM " .
+           "foro_mensajes fm , usuarios u WHERE fm.cedula=u.cedula and fm.codigoForo=" . $row['codigo'] . " order by fm.fecha";
+    $retvalComentarios = mysql_query( $sqlComentarios, $conn->getConexionDB() );
   ?>
     <h2 class="orange">Foros <?php echo $row['titulo']?></h2>
     <div class="embed-responsive embed-responsive-16by9">
@@ -20,38 +23,14 @@
     <p><img class="img-responsive img-foro img-circle" src="uploads/<?php echo $row['archivo'] ?>"></p>
     <p><?php echo $row['contenido'] ?></p>  
     <hr> 
-    <fieldset>
-        <legend>Lucia</legend>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel dignissim diam, sed tincidunt ipsum. 
-        Cras imperdiet lobortis tortor eget auctor. Sed varius eleifend justo a pretium. Vivamus vulputate nisl 
-        a tempus euismod. Sed ullamcorper nibh in est cursus, vestibulum molestie ligula consectetur. 
-        In libero est, venenatis a vestibulum varius, feugiat nec mauris. Praesent condimentum mauris metus, vel 
-        tempus quam tempor eu. Vivamus eget leo eu purus egestas ultrices. Mauris ac tellus id leo laoreet accumsan. 
-        Donec volutpat lacinia nunc ac egestas. Pellentesque suscipit ante tellus.
-    </fieldset>
+    <?php
+        while($rowComentarios = mysql_fetch_assoc($retvalComentarios))
+        {
+            echo "<fieldset><legend>" . $rowComentarios['nombre'] ."</legend>" . $rowComentarios['contenido'] . "</fieldset><br>";
+        }
+    ?>
     <br>
-    <fieldset>
-        <legend>Roberto</legend>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel dignissim diam, sed tincidunt ipsum. 
-        Cras imperdiet lobortis tortor eget auctor. Sed varius eleifend justo a pretium. Vivamus vulputate nisl 
-        a tempus euismod. Sed ullamcorper nibh in est cursus, vestibulum molestie ligula consectetur. 
-        In libero est, venenatis a vestibulum varius, feugiat nec mauris. Praesent condimentum mauris metus, vel 
-        tempus quam tempor eu. Vivamus eget leo eu purus egestas ultrices. Mauris ac tellus id leo laoreet accumsan. 
-        Donec volutpat lacinia nunc ac egestas. Pellentesque suscipit ante tellus.
-    </fieldset>
-    <br>
-    <fieldset>
-        <legend>Laura</legend>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel dignissim diam, sed tincidunt ipsum. 
-        Cras imperdiet lobortis tortor eget auctor. Sed varius eleifend justo a pretium. Vivamus vulputate nisl 
-        a tempus euismod. Sed ullamcorper nibh in est cursus, vestibulum molestie ligula consectetur. 
-        In libero est, venenatis a vestibulum varius, feugiat nec mauris. Praesent condimentum mauris metus, vel 
-        tempus quam tempor eu. Vivamus eget leo eu purus egestas ultrices. Mauris ac tellus id leo laoreet accumsan. 
-        Donec volutpat lacinia nunc ac egestas. Pellentesque suscipit ante tellus.
-    </fieldset>
-    <br>
-    <br>
-    <textarea id="txtComment" class="form-control" rows="10"></textarea>
-    <button type="submit" class="btn btn-primary" onClick="comentarForo();">Comentar</button>
+    <textarea id="txtComment" class="form-control" rows="8"></textarea>
+    <button type="submit" class="btn btn-primary" onClick="comentarForo('<?php echo $cedula ?>', '<?php echo  $codigo ?>');">Comentar</button>
     <button type="button" class="btn btn-warning">Limpiar</button>  	
 	

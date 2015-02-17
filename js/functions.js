@@ -218,6 +218,29 @@ function finPublicarForo(datos)
 	redirectForos();
 }
 
+function comentarForo(cedula, foro)
+{
+	var consulta = {"funcion": "ComentarForoDB"}; 
+	consulta.cedula =  cedula;
+	consulta.foro = foro;
+	consulta.comentario =  $("#txtComment").val();
+
+	$.ajax({
+        url: 'classes/WebService.php',
+        type: "GET",
+        data: consulta,
+        success: finComentarForo
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function finComentarForo(datos)
+{
+	datos = eval(datos);
+	alert("Se ha publicado correctamente el comentario!");
+	redirectForoVer(datos[0].resp);
+}
+
 function vacio (){
 	// //JSON
 	// var cambiosCSS =

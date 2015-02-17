@@ -25,6 +25,9 @@ if(!is_null($funcion))
 		case 'PublicarForoDB':
 			$result = PublicarForoDB($conn);
 		break;
+		case 'ComentarForoDB':
+			$result = ComentarForoDB($conn);
+		break;
   	}
   	
   	$conn->desconectarDB();
@@ -119,6 +122,25 @@ function PublicarForoDB($conn)
 	$result[] = array(
 	"resp" => $retvalIn
 	);
+}
+
+function ComentarForoDB($conn)
+{
+	$result = array();
+
+	$cedula = $_GET["cedula"];
+	$comentario = $_GET["comentario"];
+	$foro = $_GET["foro"];
+	$timeStampHoy =date('Y-m-d H:i:s');
+
+	$sqlIns = "INSERT INTO foro_mensajes VALUES (DEFAULT,$foro, $cedula,'$comentario','$timeStampHoy')";
+	$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+
+	$result[] = array(
+	"resp" => $foro
+	);
+
+	return $result;
 }
 
 ?>

@@ -2588,10 +2588,9 @@ table th[class*="col-"] {
   }
 }
 fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  min-width: 0;
+  border: black;
+  border-width: 2px;
+  border-style: solid;
 }
 legend {
   display: block;

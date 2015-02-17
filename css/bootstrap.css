@@ -88,6 +88,11 @@ nav ul li a{
   color:#FF8000;
 }
 
+.img-foro{
+  margin: 0 auto;
+  width: 350px;
+}
+
 /* fin de estilo definido por el usuario*/
 
 
@@ -1343,6 +1348,8 @@ p {
   }
   html{
     background:url("../img/background.jpg");
+    background-size:100% 100%;
+    background-attachment:fixed;
   }
   nav{
     width: 85%;
@@ -1354,6 +1361,7 @@ p {
     width: 79%;
     display: inline-block;
     vertical-align: top;
+    margin-bottom: 5em;
   }
   #login_content{    
     background:#dcddd7;

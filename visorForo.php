@@ -15,8 +15,8 @@
   ?>
     <h2 class="orange">Foros <?php echo $row['titulo']?></h2>
     <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="<!-- aqui va la ruta del video youtube -->"></iframe>
-</div>
+    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/WeYsTmIzjkw" frameborder="0" allowfullscreen></iframe>
+    </div>  
     <p><img class="img-responsive img-foro img-circle" src="uploads/<?php echo $row['archivo'] ?>"></p>
     <p><?php echo $row['contenido'] ?></p>  
     <hr> 

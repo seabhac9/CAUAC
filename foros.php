@@ -19,7 +19,7 @@
 		
 		while($row = mysql_fetch_assoc($retval))
 		{
-			echo "<li><h3><a onClick='redirectForoVer(" . $row['codigo'] .  ")'>" . $row['titulo'] . "</a><div class='right'><a onClick='redirectForoVer(" . $row['codigo'] .  ")'>Ver Mas&nbsp;&nbsp;</a><a class='orange'>Eliminar&nbsp;&nbsp;</a><a class='orange'>Editar&nbsp;&nbsp;</a></div></h3></li>";
+			echo "<li><h3><a onClick='redirectForoVer(" . $row['codigo'] .  ")'>" . $row['titulo'] . "</a><div class='right'><a onClick='redirectForoVer(" . $row['codigo'] .  ")'>Ver Mas&nbsp;&nbsp;</a><a class='orange' onClick='eliminarForo(" . $row['codigo'] .  ");'>Eliminar&nbsp;&nbsp;</a><a class='orange'>Editar&nbsp;&nbsp;</a></div></h3></li>";
 		}
 	?>
 </ul>

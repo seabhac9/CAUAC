@@ -1,74 +1,74 @@
-$(document).on("ready", inicio);
+$(document).on('ready', inicio);
 
 function inicio () 
 {
 	//Aqui va todo el codigo relacionado con DOM
-	$("#foros").on("click", redirectForos);
-	$("#message").on("click", redirectMensajes);
-	$("#redact").on("click", redirectRedact);
-	$("#exit").on("click", redirectExit);
+	$('#foros').on('click', redirectForos);
+	$('#message').on('click', redirectMensajes);
+	$('#redact').on('click', redirectRedact);
+	$('#exit').on('click', redirectExit);
 
-	// $("#mensajes").on("click", redirectMensajes);
+	// $('#mensajes').on('click', redirectMensajes);
 }
 
 function redirectForos () 
 {
-	 $("#content").load("foros.php")    
-	 $("#foros").addClass('active');
-	 $("#redact").removeClass('active');
-	 $("#message").removeClass('active');
+	 $('#content').load('foros.php')    
+	 $('#foros').addClass('active');
+	 $('#redact').removeClass('active');
+	 $('#message').removeClass('active');
 
 }
 function redirectMensajes () 
 {
-	$("#content").load("mensajes.php")
-	$("#message").addClass('active');
-	$("#foros").removeClass('active');
-	$("#redact").removeClass('active');
+	$('#content').load('mensajes.php')
+	$('#message').addClass('active');
+	$('#foros').removeClass('active');
+	$('#redact').removeClass('active');
 }
 function redirectRedact () 
 {
-	$("#content").load("redactar.php");
-	$("#redact").addClass('active');
-	$("#foros").removeClass('active');
-	$("#message").removeClass('active');
+	$('#content').load('redactar.php');
+	$('#redact').addClass('active');
+	$('#foros').removeClass('active');
+	$('#message').removeClass('active');
 }
 
 function redirectExit()
 {
-	window.location.href="index.php?cerrar=1";
+	window.location.href='index.php?cerrar=1';
 }
 
 function redirectMensaje(codigo)
 {
-	$("#content").load("visorMensaje.php?codigo=" + codigo);
+	$('#content').load('visorMensaje.php?codigo=' + codigo);
 }
 
 function redirectResponder(codigo)
 {
-	$("#content").load("respuesta.php?respuesta=" + codigo);
+	$('#content').load('respuesta.php?respuesta=' + codigo);
 }
 function redirectCreaforo()
 {
-	$("#content").load("crearforo.php", function() {
-  		var fileSelect = document.getElementById("fileSelect"),
-		  fileElem = document.getElementById("fileElem");
+	$('#content').load('crearforo.php', function() {
+  		var fileSelect = document.getElementById('fileSelect'),
+		  fileElem = document.getElementById('fileElem');
 
-		fileSelect.addEventListener("click", function (e) {
+		fileSelect.addEventListener('click', function (e) {
 		    if (fileElem) {
 		        fileElem.click();
 		    }
-		    e.preventDefault(); // evitar la navegación a "#"
+		    e.preventDefault(); // evitar la navegación a '#'
 		}, false);
 
 	});
 }
 
 function handleFile(file){
-	var fileList = document.getElementById("fileList");
+	var fileList = document.getElementById('fileList');
 
 	if (!file.length) {
-    	fileList.innerHTML = "¡No se han seleccionado archivos!";
+    	fileList.innerHTML = '¡No se han seleccionado archivos!';
     }
     else{
     	fileList.innerHTML = file[0].name;
@@ -77,76 +77,93 @@ function handleFile(file){
 
 function redirectForoVer(codigo)
 {
-	$("#content").load("visorForo.php?codigo=" + codigo);
+	$('#content').load('visorForo.php?codigo=' + codigo);
 }
 
 function cambiarColor (datos) 
 {
 	var colorito = datos.currentTarget.id;
-	var nuevoCoche = "c" + colorito + ".jpg";
-	$("#cochecito img").attr("src", nuevoCoche);
+	var nuevoCoche = 'c' + colorito + '.jpg';
+	$('#cochecito img').attr('src', nuevoCoche);
 }
 
 function limpiarMensajeRedaccion()
 {
-	$("#titleRedact").val("");
-	$("#messageRedact").val("");
+	$('#titleRedact').val('');
+	$('#messageRedact').val('');
 }
 
 function enviarMensaje(emisor)
 {
-	var consulta = {"funcion": "EnviarMensajeDB"}; 
+	var consulta = {'funcion': 'EnviarMensajeDB'}; 
 	consulta.emisor = emisor;
-	consulta.receptor = $("#selectUser").val();
-	consulta.titulo =  $("#titleRedact").val();
-	consulta.contenido = $("#messageRedact").val();
-
+	consulta.receptor = $('#selectUser').val();
+	consulta.titulo =  $('#titleRedact').val();
+	consulta.contenido = $('#messageRedact').val();
+	if (consulta.titulo=='')
+	{
+		$('#titleRedact').focus();
+		$('#redactForm').append('<p class="bg-danger">Por favor llena el campo Titulo.</p>');		
+	}
+	else if (consulta.contenido =='')
+	{
+		$('#messageRedact').focus();
+		$('#redactForm').append('<p class="bg-danger">Por favor llena el campo Mensaje.</p>');
+	}
+	else{
     $.ajax({
         url: 'classes/WebService.php',
-        type: "GET",
+        type: 'GET',
         data: consulta,
         success: finEnvioMensaje
     })
     .fail(function(err) { console.log( err ); });
 }
+}
 
 function finEnvioMensaje(datos)
 {
-	alert("Mensaje enviado correctamente.");
+	alert('Mensaje enviado correctamente.');
 	redirectMensajes();
 }
 
 function enviarRespuesta(emisor, receptor, titulo)
 {
-	var consulta = {"funcion": "EnviarRespuestaDB"}; 
+	var consulta = {'funcion': 'EnviarRespuestaDB'}; 
 	consulta.emisor = emisor;
 	consulta.receptor = receptor;
-	consulta.titulo = "RE:" + titulo;
-	consulta.respuesta = $("#txtRespuesta").val();
+	consulta.titulo = 'RE:' + titulo;
+	consulta.respuesta = $('#txtRespuesta').val();
+	if (consulta.respuesta==''){
+		$('#txtRespuesta').focus();
+		$('#content').append('<p class="bg-danger">Por favor llena el campo de respuesta para ser enviada.</p>')
+	}
+	else{
 
     $.ajax({
         url: 'classes/WebService.php',
-        type: "GET",
+        type: 'GET',
         data: consulta,
         success: finEnvioRespuesta
     })
     .fail(function(err) { console.log( err ); });
 }
+}
 
 function finEnvioRespuesta(datos)
 {
-	alert("Mensaje enviado correctamente!");
+	alert('Mensaje enviado correctamente!');
 	redirectMensajes();
 }
 
 function eliminarMensaje(codigoMensaje)
 {
-	var consulta = {"funcion": "EliminarMensajeDB"}; 
+	var consulta = {'funcion': 'EliminarMensajeDB'}; 
 	consulta.codigoMensaje = codigoMensaje;
 
 	$.ajax({
         url: 'classes/WebService.php',
-        type: "GET",
+        type: 'GET',
         data: consulta,
         success: fineliminarMensaje
     })
@@ -155,15 +172,15 @@ function eliminarMensaje(codigoMensaje)
 
 function fineliminarMensaje(datos)
 {
-	alert("Mensaje eliminado!");
+	alert('Mensaje eliminado!');
 	redirectMensajes();
 }
 
 function cambiarFiltros1 (consulta) {
-    consulta.cons ="getFiltrosTodos1";
+    consulta.cons ='getFiltrosTodos1';
     $.ajax({
         url: 'WebService.php',
-        type: "GET",
+        type: 'GET',
         data: consulta,
         success: llenarFiltros1
     })
@@ -173,8 +190,7 @@ function cambiarFiltros1 (consulta) {
 function publicarForo()
 {
 	//Enviar archivos usando ajax.
-	$( '#foroForm' )
-	.submit( function( e ) {
+	$( '#foroForm' ).submit( function( e ) {
 		$.ajax( {
 		  url: 'classes/uploads.php',
 		  type: 'POST',
@@ -191,21 +207,22 @@ function publicarForo()
 
 function subirArchivo(datos){
 	datos = eval(datos);
-	var consulta = {"funcion": "PublicarForoDB"}; 
-	consulta.titulo =  $("#titleForo").val();
-	consulta.contenido = $("#textForo").val();
+	var consulta = {'funcion': 'PublicarForoDB'}; 
+	consulta.titulo =  $('#titleForo').val();
+	consulta.contenido = $('#textForo').val();
 	consulta.archivo = datos[0].resp;
-	consulta.usuariosPermitidos = "";
+	consulta.videoURL = $('#videoURL').val();;
+	consulta.usuariosPermitidos = '';
 
 	$('#users input:checked').each(function() {
-	    consulta.usuariosPermitidos += $(this).val() + ",";
+	    consulta.usuariosPermitidos += $(this).val() + ',';
 	});
 
 	consulta.usuariosPermitidos = consulta.usuariosPermitidos.substr(0, consulta.usuariosPermitidos.length-1);
 
 	$.ajax({
         url: 'classes/WebService.php',
-        type: "GET",
+        type: 'GET',
         data: consulta,
         success: finPublicarForo
     })
@@ -214,20 +231,20 @@ function subirArchivo(datos){
 
 function finPublicarForo(datos)
 {
-	alert("Se ha publicado correctamente el foro!");
+	alert('Se ha publicado correctamente el foro!');
 	redirectForos();
 }
 
 function comentarForo(cedula, foro)
 {
-	var consulta = {"funcion": "ComentarForoDB"}; 
+	var consulta = {'funcion': 'ComentarForoDB'}; 
 	consulta.cedula =  cedula;
 	consulta.foro = foro;
-	consulta.comentario =  $("#txtComment").val();
+	consulta.comentario =  $('#txtComment').val();
 
 	$.ajax({
         url: 'classes/WebService.php',
-        type: "GET",
+        type: 'GET',
         data: consulta,
         success: finComentarForo
     })
@@ -237,8 +254,43 @@ function comentarForo(cedula, foro)
 function finComentarForo(datos)
 {
 	datos = eval(datos);
-	alert("Se ha publicado correctamente el comentario!");
+	alert('Se ha publicado correctamente el comentario!');
 	redirectForoVer(datos[0].resp);
+}
+
+function clearCrearForo(){
+	$('#titleForo').val('');
+	$('#textForo').val('');
+	$('#fileSelect').val('');
+	$('#fileList').empty();
+	$('#fileList').append('¡No se han seleccionado archivos!');
+	$('input:checkbox').removeAttr('checked');
+}
+
+
+function adjuntarVideo()
+{
+	$('#videoURL').show();
+}
+
+function eliminarForo(codigoForo)
+{
+	var consulta = {'funcion': 'EliminarForoDB'}; 
+	consulta.codigoForo = codigoForo;
+
+    $.ajax({
+        url: 'classes/WebService.php',
+        type: 'GET',
+        data: consulta,
+        success: finEliminarForo
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function finEliminarForo(datos)
+{
+	alert('Foro eliminado correctamente!');
+	redirectForos();
 }
 
 function vacio (){
@@ -246,17 +298,17 @@ function vacio (){
 	// var cambiosCSS =
 	// {
 	// 	margin: 0,
-	// 	overflow: "hidden",
+	// 	overflow: 'hidden',
 	// 	padding: 0,
 	// 	width: 0
 	// };
 	// var cambiosPersonalizacion =
 	// {
-	// 	height: "auto",
+	// 	height: 'auto',
 	// 	opacity: 1,
-	// 	width: "40%"
+	// 	width: '40%'
 	// };
-	// $("#historia").css(cambiosCSS);
-	// $("#personalizacion").css(cambiosPersonalizacion);
-	// $("#color div").on("click", cambiarColor);
+	// $('#historia').css(cambiosCSS);
+	// $('#personalizacion').css(cambiosPersonalizacion);
+	// $('#color div').on('click', cambiarColor);
 }

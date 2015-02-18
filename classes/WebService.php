@@ -28,6 +28,10 @@ if(!is_null($funcion))
 		case 'ComentarForoDB':
 			$result = ComentarForoDB($conn);
 		break;
+		case 'EliminarForoDB':
+			$result = EliminarForoDB($conn);
+		break;
+
   	}
   	
   	$conn->desconectarDB();
@@ -104,10 +108,13 @@ function PublicarForoDB($conn)
 	$titulo = $_GET["titulo"];
 	$contenido = $_GET["contenido"];
 	$archivo = $_GET["archivo"];
+	$videoURL = $_GET["videoURL"];
 	$usuariosPermitidos = $_GET["usuariosPermitidos"];
 	$codigosUsuarios = explode(',', $usuariosPermitidos);
 
-	$sqlIns = "INSERT INTO foros VALUES (DEFAULT, '$titulo', '$contenido', '$archivo')";
+	$videoURL = str_replace("watch?v=","embed/",$videoURL);
+
+	$sqlIns = "INSERT INTO foros VALUES (DEFAULT, '$titulo', '$contenido', '$archivo', '$videoURL')";
 	$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
 
 	$sql = "SELECT codigo FROM foros ORDER BY codigo DESC LIMIT 0, 1";
@@ -138,6 +145,28 @@ function ComentarForoDB($conn)
 
 	$result[] = array(
 	"resp" => $foro
+	);
+
+	return $result;
+}
+
+function EliminarForoDB($conn)
+{
+	$result = array();
+
+	$codigoForo = $_GET["codigoForo"];
+
+	$sqlIns = "DELETE FROM foro_mensajes WHERE codigoForo = $codigoForo";
+	$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+
+	$sqlIns = "DELETE FROM foro_usuarios WHERE codigoForo = $codigoForo";
+	$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+
+	$sqlIns = "DELETE FROM foros WHERE codigo = $codigoForo";
+	$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+
+	$result[] = array(
+	"resp" => $retvalIn
 	);
 
 	return $result;

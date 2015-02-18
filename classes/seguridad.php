@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 $var = isset ($_SESSION["autentificado"]) ;
 if ($var == FALSE) {

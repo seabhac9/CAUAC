@@ -18,4 +18,5 @@
 		<ul class="redactMenu nav nav-pills ">  
 		  <li role="presentation"><a onClick="enviarRespuesta('<?php echo $row['emisor']?>','<?php echo $row['receptor']?>','<?php echo $row['titulo']?>');">Responder</a></li> 
 		</ul>
-		<textarea id="txtRespuesta" class="form-control" rows="15"></textarea>
+		<textarea id="txtRespuesta" class="form-control" rows="15" required placeholder='Respuesta'></textarea>
+

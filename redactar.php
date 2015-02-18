@@ -32,7 +32,7 @@
 </li>   
 </ul>
 
-<form>
-	<input type="text" id="titleRedact" name="titleRedact" class="form-control" placeholder="Titulo"><br/>
-	<textarea class="form-control" id="messageRedact" name="messageRedact" rows="15" placeholder="Mensaje"></textarea>
+<form id="redactForm">
+	<input type="text" id="titleRedact" name="titleRedact" class="form-control" placeholder="Titulo" required><br/>
+	<textarea class="form-control" id="messageRedact" name="messageRedact" rows="15" placeholder="Mensaje" required></textarea>
 </form>

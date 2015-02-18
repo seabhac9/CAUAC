@@ -133,7 +133,7 @@ function enviarRespuesta(emisor, receptor, titulo)
 	consulta.emisor = emisor;
 	consulta.receptor = receptor;
 	consulta.titulo = 'RE:' + titulo;
-	consulta.respuesta = $('#txtRespuesta').val();
+	consulta.respuesta = $('#txtRespuesta').val() + "\n\n" + $('#txtAnterior').val();
 	if (consulta.respuesta==''){
 		$('#txtRespuesta').focus();
 		$('#content').append('<p class="bg-danger">Por favor llena el campo de respuesta para ser enviada.</p>')

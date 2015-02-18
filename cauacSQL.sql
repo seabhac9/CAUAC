@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2015 at 05:35 AM
+-- Generation Time: Feb 17, 2015 at 07:29 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -43,6 +43,35 @@ INSERT INTO `foros` (`codigo`, `titulo`, `contenido`, `archivo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `foro_mensajes`
+--
+
+CREATE TABLE IF NOT EXISTS `foro_mensajes` (
+`codigo` int(11) NOT NULL,
+  `codigoForo` int(11) NOT NULL,
+  `cedula` int(11) NOT NULL,
+  `contenido` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'FEcha creacion comentario'
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `foro_mensajes`
+--
+
+INSERT INTO `foro_mensajes` (`codigo`, `codigoForo`, `cedula`, `contenido`, `fecha`) VALUES
+(1, 15, 123, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2015-02-17 06:14:00'),
+(2, 15, 456, 'bdgdf gdf fdg fd d df df d ddddddddddddd', '2015-02-17 06:14:29'),
+(3, 15, 123, 'blas anslda da qqqqqqqqqqqqq', '2015-02-14 06:14:29'),
+(4, 15, 123, 'ultimoooooooooooo', '2015-02-17 12:21:14'),
+(5, 15, 123, 'blaaaaaaaaaaa ultimo 2', '2015-02-17 12:24:53'),
+(6, 15, 123, 'ultimo 3', '2015-02-17 12:25:29'),
+(7, 15, 123, 'ultimo 4', '2015-02-17 12:25:58'),
+(8, 15, 123, 'ultimo 5', '2015-02-17 12:26:20'),
+(9, 15, 123, 'ultimo 6', '2015-02-17 12:26:29');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `foro_usuarios`
 --
 
@@ -73,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `emisor` int(11) NOT NULL COMMENT 'Emisor',
   `receptor` int(11) NOT NULL COMMENT 'Receptor',
   `fecha` date NOT NULL COMMENT 'Fecha'
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabal de Mensajes';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabal de Mensajes';
 
 --
 -- Dumping data for table `mensajes`
@@ -93,7 +122,8 @@ INSERT INTO `mensajes` (`codigo`, `titulo`, `contenido`, `emisor`, `receptor`, `
 (13, 'mensje a todos!', 'sssssssssssss', 456, 123, '2015-02-13'),
 (14, 'a camilo', 'qqqqqqqqqqqqq', 789, 123, '2015-02-13'),
 (15, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 123, '2015-02-13'),
-(16, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 456, '2015-02-13');
+(16, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 456, '2015-02-13'),
+(17, 'RE:a todos desde rambo', 'assssssssssssssssssa aaaaaaaaaaaaaaaaaaasssssssss aaaasssss', 123, 789, '2015-02-17');
 
 -- --------------------------------------------------------
 
@@ -131,6 +161,12 @@ ALTER TABLE `foros`
  ADD PRIMARY KEY (`codigo`);
 
 --
+-- Indexes for table `foro_mensajes`
+--
+ALTER TABLE `foro_mensajes`
+ ADD PRIMARY KEY (`codigo`);
+
+--
 -- Indexes for table `foro_usuarios`
 --
 ALTER TABLE `foro_usuarios`
@@ -158,6 +194,11 @@ ALTER TABLE `usuarios`
 ALTER TABLE `foros`
 MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo Foro',AUTO_INCREMENT=16;
 --
+-- AUTO_INCREMENT for table `foro_mensajes`
+--
+ALTER TABLE `foro_mensajes`
+MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT for table `foro_usuarios`
 --
 ALTER TABLE `foro_usuarios`
@@ -166,7 +207,7 @@ MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo',AUTO_INCREMENT=
 -- AUTO_INCREMENT for table `mensajes`
 --
 ALTER TABLE `mensajes`
-MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo Mensaje',AUTO_INCREMENT=17;
+MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo Mensaje',AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-02-2015 a las 03:14:58
+-- Tiempo de generación: 19-02-2015 a las 05:03:21
 -- Versión del servidor: 5.6.14
 -- Versión de PHP: 5.5.6
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `foros` (
   `archivo` varchar(150) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Archivo Foro',
   `videoURL` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Foros' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Foros' AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `foros`
@@ -45,7 +45,8 @@ INSERT INTO `foros` (`codigo`, `titulo`, `contenido`, `archivo`, `videoURL`) VAL
 (4, 'Foro prueba sin imagen', 'Nullam in sapien finibus, aliquam nisi sed, molestie tellus. Nullam efficitur egestas diam, sit amet sollicitudin lacus molestie ut. Integer nec dolor porta, fringilla arcu nec, imperdiet elit. Maecenas in enim pretium, ornare lectus ac, pretium neque. In hac habitasse platea dictumst. Suspendisse finibus, turpis ut fermentum tempus, massa mi sodales felis, at volutpat sapien ipsum vitae elit. Donec a tellus velit. Quisque vitae massa in velit ullamcorper fermentum eu ut sem. Ut pretium dictum est ut faucibus. Curabitur scelerisque facilisis turpis, hendrerit consequat sapien dignissim semper. Morbi auctor erat a metus lacinia egestas. Donec vitae cursus turpis, porttitor facilisis erat. Curabitur ac libero lorem. Vivamus fringilla elit ut dapibus accumsan', '', 'https://www.youtube.com/embed/inb8MMZ-QmA'),
 (5, 'Foro prueba sin video ni imagen', 'Nullam in sapien finibus, aliquam nisi sed, molestie tellus. Nullam efficitur egestas diam, sit amet sollicitudin lacus molestie ut. Integer nec dolor porta, fringilla arcu nec, imperdiet elit. Maecenas in enim pretium, ornare lectus ac, pretium neque. In hac habitasse platea dictumst. Suspendisse finibus, turpis ut fermentum tempus, massa mi sodales felis, at volutpat sapien ipsum vitae elit. Donec a tellus velit. Quisque vitae massa in velit ullamcorper fermentum eu ut sem. Ut pretium dictum est ut faucibus. Curabitur scelerisque facilisis turpis, hendrerit consequat sapien dignissim semper. Morbi auctor erat a metus lacinia egestas. Donec vitae cursus turpis, porttitor facilisis erat. Curabitur ac libero lorem. Vivamus fringilla elit ut dapibus accumsan', '', ''),
 (6, 'Foro Prueba con archivo tipo pdf', 'Praesent dictum rhoncus metus sit amet suscipit. Mauris urna dui, egestas non metus vitae, facilisis mattis mauris. Donec nec aliquet massa. Sed congue turpis non rutrum mattis. Proin elementum posuere sodales. Morbi magna magna, lobortis non efficitur et, dictum id nunc. Cras consequat neque et nunc accumsan, ac auctor sem faucibus. Vestibulum diam risus, semper et pulvinar in, molestie sit amet magna. Vivamus pretium consectetur augue, non interdum neque elementum sit amet. Nam ornare neque id metus finibus, et interdum lectus gravida. Nullam at urna quis libero egestas maximus. Suspendisse potenti.', '89285.pdf', ''),
-(7, 'Foro prueba con archivo cualquiera para descargar', 'Praesent dictum rhoncus metus sit amet suscipit. Mauris urna dui, egestas non metus vitae, facilisis mattis mauris. Donec nec aliquet massa. Sed congue turpis non rutrum mattis. Proin elementum posuere sodales. Morbi magna magna, lobortis non efficitur et, dictum id nunc. Cras consequat neque et nunc accumsan, ac auctor sem faucibus. Vestibulum diam risus, semper et pulvinar in, molestie sit amet magna. Vivamus pretium consectetur augue, non interdum neque elementum sit amet. Nam ornare neque id metus finibus, et interdum lectus gravida. Nullam at urna quis libero egestas maximus. Suspendisse potenti.', '64899.doc', '');
+(7, 'Foro prueba con archivo cualquiera para descargar', 'Praesent dictum rhoncus metus sit amet suscipit. Mauris urna dui, egestas non metus vitae, facilisis mattis mauris. Donec nec aliquet massa. Sed congue turpis non rutrum mattis. Proin elementum posuere sodales. Morbi magna magna, lobortis non efficitur et, dictum id nunc. Cras consequat neque et nunc accumsan, ac auctor sem faucibus. Vestibulum diam risus, semper et pulvinar in, molestie sit amet magna. Vivamus pretium consectetur augue, non interdum neque elementum sit amet. Nam ornare neque id metus finibus, et interdum lectus gravida. Nullam at urna quis libero egestas maximus. Suspendisse potenti.', '64899.doc', ''),
+(8, 'Foro prueba Doc y Video', 'Praesent dictum rhoncus metus sit amet suscipit. Mauris urna dui, egestas non metus vitae, facilisis mattis mauris. Donec nec aliquet massa. Sed congue turpis non rutrum mattis. Proin elementum posuere sodales. Morbi magna magna, lobortis non efficitur et, dictum id nunc. Cras consequat neque et nunc accumsan, ac auctor sem faucibus. Vestibulum diam risus, semper et pulvinar in, molestie sit amet magna. Vivamus pretium consectetur augue, non interdum neque elementum sit amet. Nam ornare neque id metus finibus, et interdum lectus gravida. Nullam at urna quis libero egestas maximus. Suspendisse potenti.', '89254.doc', 'https://www.youtube.com/embed/Tgb0jK143MI');
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,8 @@ INSERT INTO `foro_mensajes` (`codigo`, `codigoForo`, `cedula`, `contenido`, `fec
 (0, 2, 123, 'Que buen foro comentario prueba 1', '2015-02-19 07:29:05'),
 (0, 3, 123, 'prueba comentario 2', '2015-02-19 07:29:19'),
 (0, 4, 123, 'prueba comentario 3', '2015-02-19 07:29:34'),
-(0, 6, 123, 'se puede ver el archivo pdf en una nueva ventana', '2015-02-19 07:48:51');
+(0, 6, 123, 'se puede ver el archivo pdf en una nueva ventana', '2015-02-19 07:48:51'),
+(0, 2, 123, 'Ha si es muy bueno ', '2015-02-19 08:18:55');
 
 -- --------------------------------------------------------
 
@@ -99,7 +101,9 @@ INSERT INTO `foro_usuarios` (`codigo`, `codigoforo`, `cedula`) VALUES
 (0, 6, 123),
 (0, 6, 456),
 (0, 7, 123),
-(0, 7, 456);
+(0, 7, 456),
+(0, 8, 123),
+(0, 8, 456);
 
 -- --------------------------------------------------------
 

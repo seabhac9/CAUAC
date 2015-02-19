@@ -75,7 +75,20 @@ function handleFile(file){
     }
 }
 function redirectEditarforo(codigo){
-	$('#content').load('editarForo.php?codigo=' + codigo);
+	//$('#content').load('editarForo.php?codigo=' + codigo);
+
+	$('#content').load('editarForo.php?codigo=' + codigo, function() {
+  		var fileSelect = document.getElementById('fileSelect'),
+		  fileElem = document.getElementById('fileElem');
+
+		fileSelect.addEventListener('click', function (e) {
+		    if (fileElem) {
+		        fileElem.click();
+		    }
+		    e.preventDefault(); // evitar la navegación a '#'
+		}, false);
+
+	});
 }
 
 function redirectForoVer(codigo)

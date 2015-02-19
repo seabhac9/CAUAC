@@ -17,6 +17,7 @@
 		<ul class="redactMenu nav nav-pills ">  
 		  <li role='presentation'><a onClick="redirectResponder(<?php echo $row['codigo'] ?>);">Responder</a></li>
 		  <li role='presentation'><a onClick="eliminarMensaje(<?php echo $row['codigo'] ?>); " >Eliminar</a></li>  
-		</ul>		
-	<p><?php echo $row['contenido'] ?></p>   
+		</ul>	
+    <textarea id="txtAnterior" class="form-control" rows="8" required placeholder='Respuesta' disabled>
+    <?php echo $row['contenido'] ?></textarea>	
 

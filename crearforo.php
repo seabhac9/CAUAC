@@ -30,7 +30,7 @@
 	<ul class="redactMenu nav nav-pills ">  
 	  <li role="presentation"><button type="button" class="btn-info" id="fileSelect">Adjuntar Archivo</button></li>
 	  <li role="presentation"><button type="button" class="btn-info" id="youtubeSelect" onClick="adjuntarVideo()">Adjuntar Enlace Youtube</a></li>
-	  <li role="presentation"><input type="text" class="form-control" id="videoURL" placeholder="url de video de youtube..." style="display:none"></li>
+	  <li role="presentation"><input type="text" class="form-control" id="videoURL" placeholder="url de video de youtube..." style="width:350px;display:none"  ></li>
     </ul>
 	<div id="fileList">¡No se han seleccionado archivos!</div>
 

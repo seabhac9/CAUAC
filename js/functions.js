@@ -74,6 +74,9 @@ function handleFile(file){
     	fileList.innerHTML = file[0].name;
     }
 }
+function redirectEditarforo(codigo){
+	$('#content').load('editarForo.php?codigo=' + codigo);
+}
 
 function redirectForoVer(codigo)
 {
@@ -262,6 +265,7 @@ function clearCrearForo(){
 	$('#titleForo').val('');
 	$('#textForo').val('');
 	$('#fileSelect').val('');
+	$('#videoURL').val('');
 	$('#fileList').empty();
 	$('#fileList').append('¡No se han seleccionado archivos!');
 	$('input:checkbox').removeAttr('checked');

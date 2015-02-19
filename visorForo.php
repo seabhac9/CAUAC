@@ -37,7 +37,7 @@
            "foro_mensajes fm , usuarios u WHERE fm.cedula=u.cedula and fm.codigoForo=" . $row['codigo'] . " order by fm.fecha";
     $retvalComentarios = mysql_query( $sqlComentarios, $conn->getConexionDB() );
   ?>
-    <h2 class="orange">Foros <?php echo $row['titulo']?></h2>
+    <h2 class="orange">Foros / <?php echo $row['titulo']?></h2>
     <?php 
     if ($contenidoVideo!=''){
      echo '<div class="embed-responsive embed-responsive-16by9">

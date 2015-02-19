@@ -22,20 +22,30 @@
     {
         $contenidoImagen = "<img class='img-responsive img-foro img-circle' src='uploads/" . $row['archivo'] . "'>";
     }
-    else
+    elseif (end($temp) == "pdf") {
+        $contenidoImagen = "<br><a class='btn btn-success btn-lg' href='uploads/" . $row['archivo'] . "' target='_blank'>Ver Archivo " . $row['archivo'] . "</a>";
+    }
+    elseif ($row['archivo']!='') 
     {
-        $contenidoImagen = "<br><a href='uploads/" . $row['archivo'] . "' download>*DESCARGAR ARCHIVO</a>";
-    }      
+        $contenidoImagen = "<br><a class='btn btn-success btn-lg' href='uploads/" . $row['archivo'] . "' download>*DESCARGAR ARCHIVO</a>";
+    } 
+    else {
+        $contenidoImagen='';
+    }    
 
     $sqlComentarios = "SELECT concat(u.nombres, ' ', apellidos) as nombre, fm.contenido as contenido FROM " .
            "foro_mensajes fm , usuarios u WHERE fm.cedula=u.cedula and fm.codigoForo=" . $row['codigo'] . " order by fm.fecha";
     $retvalComentarios = mysql_query( $sqlComentarios, $conn->getConexionDB() );
   ?>
     <h2 class="orange">Foros <?php echo $row['titulo']?></h2>
-    <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" width="420" height="315" src="<?php echo $contenidoVideo ?>" frameborder="0" allowfullscreen></iframe>
-    </div>  
-    <p><?php echo $contenidoImagen ?></p>
+    <?php 
+    if ($contenidoVideo!=''){
+     echo '<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" width="420" height="315" src="'.$contenidoVideo.'" frameborder="0" allowfullscreen></iframe>
+    </div>';
+    } 
+    if($contenidoImagen!=''){      
+    echo '<p>'.$contenidoImagen.'';} ?></p>
     <p><?php echo $row['contenido'] ?></p>  
     <hr> 
     <?php

@@ -9,7 +9,7 @@ $newfilename = rand(1,99999) . '.' . end($temp);
 if (move_uploaded_file($_FILES['fileElem']['tmp_name'], $uploaddir . $newfilename)) {
 	$retval= $newfilename;
 } else {
-    $retval = "no";
+    $retval = '';
 }
 
 $result[] = array(

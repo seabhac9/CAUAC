@@ -17,6 +17,7 @@
 		<ul class="redactMenu nav nav-pills ">  
 		  <li role='presentation'><a onClick="redirectResponder(<?php echo $row['codigo'] ?>);">Responder</a></li>
 		  <li role='presentation'><a onClick="eliminarMensaje(<?php echo $row['codigo'] ?>); " >Eliminar</a></li>  
+          <li role='presentation'><?php if($row['archivo'] != "") echo "<a class='btn btn-success btn-lg' href='uploads/" . $row['archivo'] . "' download>Descargar Archivo</a>"; ?>
 		</ul>	
     <textarea id="txtAnterior" class="form-control" rows="8" required placeholder='Respuesta' disabled>
     <?php echo $row['contenido'] ?></textarea>	

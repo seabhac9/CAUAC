@@ -45,9 +45,10 @@ function EnviarRespuestaDB($conn)
 	$receptor = $_GET["receptor"];
 	$titulo = $_GET["titulo"];
 	$respuesta = $_GET["respuesta"];
+	$archivo = $_GET["archivo"];
 	$time = date("Y-m-d");
 
-	$sql = "INSERT INTO mensajes VALUES(DEFAULT,'$titulo','$respuesta',$receptor,$emisor,'$time');";
+$sql = "INSERT INTO mensajes VALUES(DEFAULT,'$titulo','$respuesta',$receptor,$emisor,'$time','$archivo');";
 	$retval = mysql_query( $sql, $conn->getConexionDB() );
 
 	$result[] = array(

@@ -59,7 +59,18 @@ function redirectMensaje(codigo)
 
 function redirectResponder(codigo)
 {
-	$('#content').load('respuesta.php?respuesta=' + codigo);
+	$('#content').load('respuesta.php?respuesta=' + codigo, function() {
+  		var fileSelect = document.getElementById('fileSelect'),
+		  fileElem = document.getElementById('fileElem');
+
+		fileSelect.addEventListener('click', function (e) {
+		    if (fileElem) {
+		        fileElem.click();
+		    }
+		    e.preventDefault(); // evitar la navegación a '#'
+		}, false);
+
+	});
 }
 function redirectCreaforo()
 {
@@ -176,12 +187,29 @@ function subirArchivoMensaje(){
 	redirectMensajes();
 }
 
-function enviarRespuesta(emisor, receptor, titulo)
+function enviarRespuesta(){
+	$( '#mensajeForm' ).submit( function( e ) {
+		$.ajax( {
+		  url: 'classes/uploads.php',
+		  type: 'POST',
+		  data: new FormData( this ),
+		  processData: false,
+		  contentType: false,
+		  success: finEnvioRespuesta
+		} );
+		e.preventDefault();
+	} );
+}
+
+function finEnvioRespuesta(datos)
 {
+	datos = eval(datos);
+
 	var consulta = {'funcion': 'EnviarRespuestaDB'}; 
-	consulta.emisor = emisor;
-	consulta.receptor = receptor;
-	consulta.titulo = 'RE:' + titulo;
+	consulta.archivo = datos[0].resp;
+	consulta.emisor = $('#emisor').val();;
+	consulta.receptor = $('#receptor').val();;
+	consulta.titulo = 'RE:' + $('#titulo').val();;
 	consulta.respuesta = $('#txtRespuesta').val() + "\n\n" + $('#txtAnterior').val();
 	if (consulta.respuesta==''){
 		$('#txtRespuesta').focus();
@@ -193,13 +221,13 @@ function enviarRespuesta(emisor, receptor, titulo)
         url: 'classes/WebService.php',
         type: 'GET',
         data: consulta,
-        success: finEnvioRespuesta
+        success: finEnvioRespuestaMensaje
     })
     .fail(function(err) { console.log( err ); });
 }
 }
 
-function finEnvioRespuesta(datos)
+function finEnvioRespuestaMensaje(datos)
 {
 	alert('Mensaje enviado correctamente!');
 	redirectMensajes();

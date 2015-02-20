@@ -5,7 +5,8 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/prefix.js"></script>    
+    <script src="js/prefix.js"></script>
+    <script src="js/functions.js"></script>    
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
@@ -38,7 +39,13 @@
               <div class="form-group">                
                 <label for="pass">Contraseña</label>
                 <input type="password" class="form-control" id="pass" name="pass" required="required" placeholder="Contraseña">
-              </div>              
+              </div> 
+              <label class="" for="captcha">Por favor introduzca el código</label>
+<div id="captcha-wrap">
+    <img src="img/refresh.jpg" alt="refresh captcha" id="refresh-captcha" /> <img src="classes/newCaptcha.php" alt="" id="captcha" />
+</div>
+<input class="narrow text input" id="captcha" name="captcha" type="text" placeholder="Verification Code"/>
+             
               <button type="submit" class="btn btn-primary">Registrar</button>              
             </form>
 

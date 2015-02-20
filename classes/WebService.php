@@ -75,6 +75,7 @@ function EnviarMensajeDB($conn)
 	$receptor = $_GET["receptor"];
 	$titulo = $_GET["titulo"];
 	$contenido = $_GET["contenido"];
+	$archivo = $_GET["archivo"];
 	$time = date("Y-m-d");
 
 	if($receptor == "all")
@@ -86,7 +87,7 @@ function EnviarMensajeDB($conn)
 		{
 			if($row['cedula'] != $emisor)
 			{
-				$sqlIn = "INSERT INTO mensajes VALUES(DEFAULT,'$titulo','$contenido',$emisor," . $row['cedula'] . ",'$time');";
+			$sqlIn = "INSERT INTO mensajes VALUES(DEFAULT,'$titulo','$contenido',$emisor," . $row['cedula'] . ",'$time','$archivo');";
 				$retvalIn = mysql_query( $sqlIn, $conn->getConexionDB() );	
 			}
 		}

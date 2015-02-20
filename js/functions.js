@@ -28,10 +28,23 @@ function redirectMensajes ()
 }
 function redirectRedact () 
 {
-	$('#content').load('redactar.php');
+
 	$('#redact').addClass('active');
 	$('#foros').removeClass('active');
 	$('#message').removeClass('active');
+
+	$('#content').load('redactar.php', function() {
+  		var fileSelect = document.getElementById('fileSelect'),
+		  fileElem = document.getElementById('fileElem');
+
+		fileSelect.addEventListener('click', function (e) {
+		    if (fileElem) {
+		        fileElem.click();
+		    }
+		    e.preventDefault(); // evitar la navegación a '#'
+		}, false);
+
+	});
 }
 
 function redirectExit()
@@ -109,13 +122,32 @@ function limpiarMensajeRedaccion()
 	$('#messageRedact').val('');
 }
 
-function enviarMensaje(emisor)
+function enviarMensaje()
 {
+	$( '#redactForm' ).submit( function( e ) {
+		$.ajax( {
+		  url: 'classes/uploads.php',
+		  type: 'POST',
+		  data: new FormData( this ),
+		  processData: false,
+		  contentType: false,
+		  success: finEnvioMensaje
+		} );
+		e.preventDefault();
+	} );
+}
+
+function finEnvioMensaje(datos)
+{
+	datos = eval(datos);
 	var consulta = {'funcion': 'EnviarMensajeDB'}; 
-	consulta.emisor = emisor;
+	consulta.archivo = datos[0].resp;
+	consulta.emisor = $('#emisor').val();
 	consulta.receptor = $('#selectUser').val();
 	consulta.titulo =  $('#titleRedact').val();
 	consulta.contenido = $('#messageRedact').val();
+
+
 	if (consulta.titulo=='')
 	{
 		$('#titleRedact').focus();
@@ -127,18 +159,19 @@ function enviarMensaje(emisor)
 		$('#redactForm').append('<p class="bg-danger">Por favor llena el campo Mensaje.</p>');
 	}
 	else{
-    $.ajax({
-        url: 'classes/WebService.php',
-        type: 'GET',
-        data: consulta,
-        success: finEnvioMensaje
-    })
-    .fail(function(err) { console.log( err ); });
-}
+	    $.ajax({
+	        url: 'classes/WebService.php',
+	        type: 'GET',
+	        data: consulta,
+	        success: subirArchivoMensaje
+	    })
+	    .fail(function(err) { console.log( err ); });
+	}
 }
 
-function finEnvioMensaje(datos)
-{
+
+
+function subirArchivoMensaje(){
 	alert('Mensaje enviado correctamente.');
 	redirectMensajes();
 }

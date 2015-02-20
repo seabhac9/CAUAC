@@ -20,8 +20,14 @@
 		</ul>
         Mensaje de Respuesta:<br>
         <textarea id="txtRespuesta" class="form-control" rows="8" required placeholder='...'></textarea>
+        <input type="file" name="fileElem" id="fileElem" style="display:none" onchange="handleFile(this.files)"/>
+    <ul class="redactMenu nav nav-pills "> 
+        <li role="presentation"><button type="button" class="btn-info" id="fileSelect">Adjuntar Archivo</button></li>
+    </ul>
+    <div id="fileList">¡No se han seleccionado archivos!</div>
         <br>
         Mensaje Recibido:<br>
         <textarea id="txtAnterior" class="form-control" rows="8" required placeholder='Respuesta' disabled>__________________________
         <?php echo $row['contenido'] ?></textarea>
+
 

@@ -15,7 +15,7 @@ class ConexionDB
 		$this->host="127.0.0.1"; // Host name 
 		$this->username="root"; // Mysql username 
 		$this->password=""; // Mysql password 
-		$this->db_name="cauac"; // Database name 
+		$this->db_name="producto_cauac"; // Database name 
 	}
 
 	//Funcion: Realiza la conexion con la base de datos y activa variable de conexion.

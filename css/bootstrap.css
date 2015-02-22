@@ -1374,6 +1374,7 @@ p {
   #register_content{    
     background:#dcddd7;
     padding-top: 5em;
+    padding-bottom: 3em;
     min-height: 900px;
   }
 

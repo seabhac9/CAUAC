@@ -37,7 +37,7 @@
                 echo '<b>El usuario ya existe</b>';
                 }
                 else{
-                    echo '<b>Registro satisfactorio, por favor ingrese con sus datos.</b>';
+                    echo '<b>Registro satisfactorio, Un correo será enviado a su em@il con el link de verificación para que pueda ingresar.</b>';
                 } 
             }          
             //     else

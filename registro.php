@@ -105,7 +105,7 @@ HTML;
 }
 
 ?>
-<p class="text-danger"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Digite la siguiente palabra:</p>
+<p class="text-danger"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp;Digite la siguiente palabra:</p>
 <img src="captcha.php" id="captcha" /><br/>
 <!-- CHANGE TEXT LINK -->   
 

@@ -46,13 +46,20 @@
 	<?php
   		while($row2 = mysql_fetch_assoc($retval2))
 		{
-			echo "<div class='checkbox'><label><input checked id='check" . $row2['cedula'] . "' type='checkbox' value='" . $row2['cedula'] . "'>" . $row2['nombreCompleto'] . "</label></div>";
+			echo "<div class='checkbox'><label><input id='check" . $row2['cedula'] . "' type='checkbox' value='" . $row2['cedula'] . "' ";
+			$sqlUsuario = "SELECT codigo from foro_usuarios where codigoForo=$codigo and cedula=" . $row2['cedula'];
+			$retvalUsuario = mysql_query( $sqlUsuario, $conn->getConexionDB() );
+			if(mysql_num_rows($retvalUsuario) >= 1)
+			 	echo "checked";
+
+			echo " >" . $row2['nombreCompleto'] . "</label></div>";
 		}
 	?>
 	
 	</div>	
   </div>
-<button type="submit" class="btn btn-primary">Terminar Edición</button>
+  <input type="hidden" name="codigo" id="codigo" value="<?php echo $codigo; ?>">
+<button type="submit" class="btn btn-primary" onClick="editarForo();">Terminar Edición</button>
 
 <button type="button" class="btn btn-warning" onclick="clearCrearForo();">Limpiar</button>
 

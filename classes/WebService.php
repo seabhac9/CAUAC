@@ -25,6 +25,9 @@ if(!is_null($funcion))
 		case 'PublicarForoDB':
 			$result = PublicarForoDB($conn);
 		break;
+		case 'EditarForoDB':
+			$result = EditarForoDB($conn);
+		break;
 		case 'ComentarForoDB':
 			$result = ComentarForoDB($conn);
 		break;
@@ -131,6 +134,35 @@ function PublicarForoDB($conn)
 	$result[] = array(
 	"resp" => $retvalIn
 	);
+}
+
+function EditarForoDB($conn){
+	$result = array();
+	$titulo = $_GET["titulo"];
+	$codigo = $_GET["codigo"];
+	$contenido = $_GET["contenido"];
+	$archivo = $_GET["archivo"];
+	$videoURL = $_GET["videoURL"];
+	$usuariosPermitidos = $_GET["usuariosPermitidos"];
+	$codigosUsuarios = explode(',', $usuariosPermitidos);
+
+	$videoURL = str_replace("watch?v=","embed/",$videoURL);
+
+	$sqlIns = "UPDATE foros SET titulo = '$titulo', contenido='$contenido', archivo='$archivo', videoURL='$videoURL' WHERE codigo=$codigo";
+	$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+
+	$sqlDel = "DELETE FROM foro_usuarios WHERE codigoForo = $codigo";
+
+	for ($i = 0; $i < count($codigosUsuarios); $i++) {
+    	$sqlIns = "INSERT INTO foro_usuarios VALUES (DEFAULT, " . $codigo . "," . $codigosUsuarios[$i] . ")";
+		$retvalIn = mysql_query( $sqlIns, $conn->getConexionDB() );	
+	}
+
+	$result[] = array(
+	"resp" => $retvalIn
+	);
+
+	return $result;
 }
 
 function ComentarForoDB($conn)

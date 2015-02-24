@@ -16,7 +16,11 @@
 
 		$cedula = $_SESSION["cedula"];
 
-		$sql = "SELECT * FROM foros;";
+		if ($varRol == '1')
+			$sql = "SELECT * FROM foros;";
+		else
+			$sql = "SELECT f.codigo, f.titulo, f.contenido, f.archivo, f.videoURL FROM foros f, foro_usuarios fu where f.codigo = fu.codigoForo and fu.cedula='$cedula';";
+
 		$retval = mysql_query( $sql, $conn->getConexionDB() );
 		
 		while($row = mysql_fetch_assoc($retval))

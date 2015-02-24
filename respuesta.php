@@ -24,7 +24,6 @@
           <div id="fileList">¡No se han seleccionado archivos!</div>
         </li>
 		</ul>
-<<<<<<< HEAD
         Mensaje de Respuesta:<br>
         <textarea id="txtRespuesta" class="form-control" rows="8" required placeholder='...'></textarea>
         <input type="file" name="fileElem" id="fileElem" style="display:none" onchange="handleFile(this.files)"/>
@@ -36,7 +35,6 @@
         Mensaje Recibido:<br>
         <textarea id="txtAnterior" class="form-control" rows="8" required placeholder='Respuesta' disabled>__________________________
         <?php echo $row['contenido'] ?></textarea>
-=======
             Mensaje de Respuesta:<br>
             <textarea id="txtRespuesta" class="form-control" rows="8" required placeholder='...'></textarea>
             <br>
@@ -48,6 +46,5 @@
             <input type="hidden" name="titulo" id="titulo" value="<?php echo $row['titulo']?>">
            
         </form>
->>>>>>> b28e54d941d91291ca0064de3c3af53e3bac499f
 
 

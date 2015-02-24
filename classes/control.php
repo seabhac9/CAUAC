@@ -10,12 +10,12 @@ ini_set('display_errors', '1');
 	$user = $_POST["user"];
 	$pass = $_POST["pass"];
 
-	$sql = "SELECT cedula, nombres, apellidos, rol FROM usuarios WHERE usuario = '$user' and clave = '$pass'";
+	$sql = "SELECT cedula, nombres, apellidos, rol, aprobado FROM usuarios WHERE usuario = '$user' and clave = '$pass'";
 	$retval = mysql_query( $sql, $conn->getConexionDB() );
 	$row = mysql_fetch_assoc($retval);
 
 	//Si el registro existe valida e ingresa.
-	if (mysql_num_rows($retval) > 0){
+	if (mysql_num_rows($retval) > 0 && $row["aprobado"] == 's'){
 	    //usuario y contraseña válidos
 	    //defino una sesion y guardo datos
 	    session_start();

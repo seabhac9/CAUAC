@@ -28,7 +28,11 @@
 	else
 	{
 		$sql = "INSERT INTO  usuarios (cedula, nombres, apellidos, usuario, clave, rol, empresa, cargo, correo, telefono,  aprobado)".
+<<<<<<< HEAD
 					"VALUES ($cedula, '$nombres', '$apellidos', '$usuario', '$clave', 0, '$empresa','$cargo','$correo', $telefono,'n');";
+=======
+					"VALUES ($cedula, '$nombres', '$apellidos', '$usuario', '$clave', 0, '$empresa','$cargo','$correo', '$telefono','n');";
+>>>>>>> 6dc2c62d8e88b818c01b18d05e61a9f4ab26b915
 		
 		$retval = mysql_query( $sql, $conn->getConexionDB() );
 

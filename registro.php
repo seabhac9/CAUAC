@@ -23,7 +23,7 @@ if (!empty($_REQUEST['captcha'])) {
   else {
     $captcha_message = "Valid captcha";
     $style = "background-color: #CCFF99";
-    header("Location: classes/registrar.php?name=" . $_POST['name'] . "&lastName=" . $_POST['lastName'] . "&cedula=" . $_POST['cedula'] . "&bussines=" . $_POST['bussines'] . "&user=" . $_POST['user'] . "&pass=". $_POST['pass']);
+    header("Location: classes/registrar.php?name=" . $_POST['name'] . "&lastName=" . $_POST['lastName'] . "&cedula=" . $_POST['cedula'] . "&bussines=" . $_POST['bussines'] . "&user=" . $_POST['user'] . "&pass=". $_POST['pass']. "&cargo=". $_POST['cargo']. "&correo=". $_POST['correo'] . "&telefono=". $_POST['telefono']);
   }
 }
 ?>

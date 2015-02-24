@@ -2,13 +2,18 @@
 	include("classes/seguridad.php");
 	require_once('classes/conexionDB.php');
 	//error_reporting(E_ALL);
+	$varRol = $_SESSION["rol"];
 
 	$conn = new ConexionDB;
 	$conn->conectarDB();
 
 	$cedula = $_SESSION["cedula"];
 
-	$sql = "SELECT cedula, CONCAT(nombres ,' ',apellidos) as nombreCompleto FROM usuarios where cedula != $cedula";
+	if ($varRol == '1')
+		$sql = "SELECT cedula, CONCAT(nombres ,' ',apellidos) as nombreCompleto FROM usuarios where cedula != $cedula";
+	else
+		$sql = "SELECT cedula, CONCAT(nombres ,' ',apellidos) as nombreCompleto FROM usuarios where rol = 1";
+	
 	$retval = mysql_query( $sql, $conn->getConexionDB() );
 	
 ?>
@@ -27,8 +32,10 @@
 				{
 					echo "<option value='" . $row['cedula'] . "'>" . $row['nombreCompleto'] . "</option>";
 				}
+				if ($varRol == '1')
+					echo "<option value='all'>Todos</option>";
 		  	?>
-		  <option value="all">Todos</option>
+		  
 	  </select>
 	</li>   
 </ul>

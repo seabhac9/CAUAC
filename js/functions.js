@@ -278,8 +278,6 @@ function publicarForo()
 		} );
 		e.preventDefault();
 	} );
-
-    
 }
 
 function subirArchivo(datos){
@@ -307,6 +305,53 @@ function subirArchivo(datos){
 }
 
 function finPublicarForo(datos)
+{
+	alert('Se ha publicado correctamente el foro!');
+	redirectForos();
+}
+
+function editarForo()
+{
+	//Enviar archivos usando ajax.
+	$( '#foroForm' ).submit( function( e ) {
+		$.ajax( {
+		  url: 'classes/uploads.php',
+		  type: 'POST',
+		  data: new FormData( this ),
+		  processData: false,
+		  contentType: false,
+		  success: subirArchivoEdicion
+		} );
+		e.preventDefault();
+	} );
+}
+
+function subirArchivoEdicion(datos){
+	datos = eval(datos);
+	var consulta = {'funcion': 'EditarForoDB'}; 
+	consulta.titulo =  $('#titleForo').val();
+	consulta.contenido = $('#textForo').val();
+	consulta.archivo = datos[0].resp;
+	consulta.videoURL = $('#videoURL').val();
+	consulta.codigo = $('#codigo').val();
+	consulta.usuariosPermitidos = '';
+
+	$('#users input:checked').each(function() {
+	    consulta.usuariosPermitidos += $(this).val() + ',';
+	});
+
+	consulta.usuariosPermitidos = consulta.usuariosPermitidos.substr(0, consulta.usuariosPermitidos.length-1);
+
+	$.ajax({
+        url: 'classes/WebService.php',
+        type: 'GET',
+        data: consulta,
+        success: finEditarForo
+    })
+    .fail(function(err) { console.log( err ); });
+}
+
+function finEditarForo(datos)
 {
 	alert('Se ha publicado correctamente el foro!');
 	redirectForos();

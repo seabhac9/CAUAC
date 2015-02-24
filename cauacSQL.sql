@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2015 at 03:08 AM
+-- Generation Time: Feb 24, 2015 at 05:42 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -32,14 +32,15 @@ CREATE TABLE IF NOT EXISTS `foros` (
   `contenido` varchar(2000) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Contenido Foro',
   `archivo` varchar(150) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Archivo Foro',
   `videoURL` varchar(200) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Video de youtube'
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Foros';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Foros';
 
 --
 -- Dumping data for table `foros`
 --
 
 INSERT INTO `foros` (`codigo`, `titulo`, `contenido`, `archivo`, `videoURL`) VALUES
-(17, 'bla1', 'blaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '9501.sql', 'https://www.youtube.com/embed/WB_MOsJjkaU');
+(17, 'bla12', '111012', '42020.jpg', 'https://www.youtube.com/embed/KzGKsXPBILw'),
+(18, 'bla 2', 'blaaa blaa', '', '');
 
 -- --------------------------------------------------------
 
@@ -53,14 +54,15 @@ CREATE TABLE IF NOT EXISTS `foro_mensajes` (
   `cedula` int(11) NOT NULL,
   `contenido` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'FEcha creacion comentario'
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `foro_mensajes`
 --
 
 INSERT INTO `foro_mensajes` (`codigo`, `codigoForo`, `cedula`, `contenido`, `fecha`) VALUES
-(11, 17, 123, 'aaaaaaaaaaaaaa', '2015-02-24 06:39:55');
+(11, 17, 123, 'aaaaaaaaaaaaa', '2015-02-24 04:14:46'),
+(12, 17, 123, 'aaaaaaaaa', '2015-02-24 10:41:45');
 
 -- --------------------------------------------------------
 
@@ -72,14 +74,16 @@ CREATE TABLE IF NOT EXISTS `foro_usuarios` (
 `codigo` int(11) NOT NULL COMMENT 'Codigo',
   `codigoforo` int(11) NOT NULL COMMENT 'Codigo foro',
   `cedula` int(11) NOT NULL COMMENT 'cedula'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Usuarios permitidos foro';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Usuarios permitidos foro';
 
 --
 -- Dumping data for table `foro_usuarios`
 --
 
 INSERT INTO `foro_usuarios` (`codigo`, `codigoforo`, `cedula`) VALUES
-(8, 17, 456);
+(9, 18, 999999),
+(10, 17, 789),
+(11, 17, 999999);
 
 -- --------------------------------------------------------
 
@@ -151,10 +155,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`cedula`, `nombres`, `apellidos`, `usuario`, `clave`, `rol`, `empresa`, `cargo`, `correo`, `telefono`, `aprobado`) VALUES
-(123, 'camilo', 'rodriguez', 'camilo', '123', 1, 'bla', '', '', '', 'n'),
+(123, 'camilo', 'rodriguez', 'camilo', '123', 1, 'bla', '', '', '', 's'),
 (456, 'Robin', 'Hood', 'robin', '123', 1, 'bla', '', '', '', 'n'),
 (789, 'Rambo', 'Tyson', 'rambo', '123', 0, 'bla9', '', '', '', 'n'),
-(999999, 'Pedro', 'Vasquez', 'vasq', '123', 0, 'HP', 'Gerente', 'bla@hp.com', '1234567', 'n');
+(999999, 'Pedro', 'Vasquez', 'vasq', '123', 0, 'HP', 'Gerente', 'bla@hp.com', '1234567', 's');
 
 --
 -- Indexes for dumped tables
@@ -198,17 +202,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `foros`
 --
 ALTER TABLE `foros`
-MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo Foro',AUTO_INCREMENT=18;
+MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo Foro',AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `foro_mensajes`
 --
 ALTER TABLE `foro_mensajes`
-MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `foro_usuarios`
 --
 ALTER TABLE `foro_usuarios`
-MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo',AUTO_INCREMENT=9;
+MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo',AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `mensajes`
 --

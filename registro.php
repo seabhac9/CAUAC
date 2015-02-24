@@ -56,11 +56,11 @@ if (!empty($_REQUEST['captcha'])) {
               </div>
               <div class="form-group">                
                 <!-- <label for="email">Email</label> -->
-                <input type="email" class="form-control" id="email" name="email" required="required" placeholder="Correo@electronico" value="<?php if( isset($_POST['email']) ) echo $_POST['email']; else echo'';  ?>">
+                <input type="email" class="form-control" id="correo" name="correo" required="required" placeholder="Correo@electronico" value="<?php if( isset($_POST['correo']) ) echo $_POST['correo']; else echo'';  ?>">
               </div>
               <div class="form-group">                
                 <!-- <label for="tel">Teléfono</label> -->
-                <input type="tel" class="form-control" id="tel" name="tel" required="required" placeholder="Teléfono" value="<?php if( isset($_POST['tel']) ) echo $_POST['tel']; else echo'';  ?>">
+                <input type="tel" class="form-control" id="telefono" name="telefono" required="required" placeholder="Teléfono" value="<?php if( isset($_POST['telefono']) ) echo $_POST['telefono']; else echo'';  ?>">
               </div>
               <div class="form-group">                
                 <!-- <label for="user">Usuario</label> -->

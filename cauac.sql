@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-02-2015 a las 05:03:21
+-- Tiempo de generación: 24-02-2015 a las 02:17:19
 -- Versión del servidor: 5.6.14
 -- Versión de PHP: 5.5.6
 
@@ -117,45 +117,47 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `contenido` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Contenido Mensaje',
   `emisor` int(11) NOT NULL COMMENT 'Emisor',
   `receptor` int(11) NOT NULL COMMENT 'Receptor',
-  `fecha` date NOT NULL COMMENT 'Fecha'
+  `fecha` date NOT NULL COMMENT 'Fecha',
+  `archivo` varchar(150) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabal de Mensajes';
 
 --
 -- Volcado de datos para la tabla `mensajes`
 --
 
-INSERT INTO `mensajes` (`codigo`, `titulo`, `contenido`, `emisor`, `receptor`, `fecha`) VALUES
-(1, 'mensaje 1', 'Este es un mensaje de prueba enviado por el admin.', 123, 123, '2015-02-06'),
-(2, 'mensaje 2', 'Otro mensaje mas de prueba.', 123, 123, '2015-02-06'),
-(1, 'mensaje 1', 'Este es un mensaje de prueba enviado por el admin.', 123, 123, '2015-02-06'),
-(2, 'mensaje 2', 'Otro mensaje mas de prueba.', 123, 123, '2015-02-06'),
-(3, 'RE:mensaje 1', 'aaaaaaaaaaa', 123, 123, '2015-02-13'),
-(6, 'mensaje 3', 'mas pruebas', 456, 123, '2015-02-06'),
-(7, 'RE:mensaje 3', 'mensaje a robin', 123, 456, '2015-02-13'),
-(8, 'RE:RE:mensaje 3', 'recibido camilo :P', 456, 123, '2015-02-13'),
-(9, 'mensaje envio', 'redaactar algo', 123, 123, '2015-02-13'),
-(10, 'mensaje a robin', 'asdnlasd aslkd aslkdskld', 123, 456, '2015-02-13'),
-(11, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 123, '2015-02-13'),
-(12, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 456, '2015-02-13'),
-(14, 'a camilo', 'qqqqqqqqqqqqq', 789, 123, '2015-02-13'),
-(15, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 123, '2015-02-13'),
-(16, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 456, '2015-02-13'),
-(0, 'RE:mensaje 2', 'ricardo prueba mensaje ', 123, 123, '2015-02-17'),
-(1, 'mensaje 1', 'Este es un mensaje de prueba enviado por el admin.', 123, 123, '2015-02-06'),
-(2, 'mensaje 2', 'Otro mensaje mas de prueba.', 123, 123, '2015-02-06'),
-(3, 'RE:mensaje 1', 'aaaaaaaaaaa', 123, 123, '2015-02-13'),
-(6, 'mensaje 3', 'mas pruebas', 456, 123, '2015-02-06'),
-(7, 'RE:mensaje 3', 'mensaje a robin', 123, 456, '2015-02-13'),
-(8, 'RE:RE:mensaje 3', 'recibido camilo :P', 456, 123, '2015-02-13'),
-(9, 'mensaje envio', 'redaactar algo', 123, 123, '2015-02-13'),
-(10, 'mensaje a robin', 'asdnlasd aslkd aslkdskld', 123, 456, '2015-02-13'),
-(11, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 123, '2015-02-13'),
-(12, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 456, '2015-02-13'),
-(13, 'mensje a todos!', 'sssssssssssss', 456, 123, '2015-02-13'),
-(14, 'a camilo', 'qqqqqqqqqqqqq', 789, 123, '2015-02-13'),
-(15, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 123, '2015-02-13'),
-(16, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 456, '2015-02-13'),
-(17, 'RE:a todos desde rambo', 'assssssssssssssssssa aaaaaaaaaaaaaaaaaaasssssssss aaaasssss', 123, 789, '2015-02-17');
+INSERT INTO `mensajes` (`codigo`, `titulo`, `contenido`, `emisor`, `receptor`, `fecha`, `archivo`) VALUES
+(1, 'mensaje 1', 'Este es un mensaje de prueba enviado por el admin.', 123, 123, '2015-02-06', ''),
+(2, 'mensaje 2', 'Otro mensaje mas de prueba.', 123, 123, '2015-02-06', ''),
+(1, 'mensaje 1', 'Este es un mensaje de prueba enviado por el admin.', 123, 123, '2015-02-06', ''),
+(2, 'mensaje 2', 'Otro mensaje mas de prueba.', 123, 123, '2015-02-06', ''),
+(3, 'RE:mensaje 1', 'aaaaaaaaaaa', 123, 123, '2015-02-13', ''),
+(6, 'mensaje 3', 'mas pruebas', 456, 123, '2015-02-06', ''),
+(7, 'RE:mensaje 3', 'mensaje a robin', 123, 456, '2015-02-13', ''),
+(8, 'RE:RE:mensaje 3', 'recibido camilo :P', 456, 123, '2015-02-13', ''),
+(9, 'mensaje envio', 'redaactar algo', 123, 123, '2015-02-13', ''),
+(10, 'mensaje a robin', 'asdnlasd aslkd aslkdskld', 123, 456, '2015-02-13', ''),
+(11, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 123, '2015-02-13', ''),
+(12, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 456, '2015-02-13', ''),
+(14, 'a camilo', 'qqqqqqqqqqqqq', 789, 123, '2015-02-13', ''),
+(15, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 123, '2015-02-13', ''),
+(16, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 456, '2015-02-13', ''),
+(0, 'RE:mensaje 2', 'ricardo prueba mensaje ', 123, 123, '2015-02-17', ''),
+(1, 'mensaje 1', 'Este es un mensaje de prueba enviado por el admin.', 123, 123, '2015-02-06', ''),
+(2, 'mensaje 2', 'Otro mensaje mas de prueba.', 123, 123, '2015-02-06', ''),
+(3, 'RE:mensaje 1', 'aaaaaaaaaaa', 123, 123, '2015-02-13', ''),
+(6, 'mensaje 3', 'mas pruebas', 456, 123, '2015-02-06', ''),
+(7, 'RE:mensaje 3', 'mensaje a robin', 123, 456, '2015-02-13', ''),
+(8, 'RE:RE:mensaje 3', 'recibido camilo :P', 456, 123, '2015-02-13', ''),
+(9, 'mensaje envio', 'redaactar algo', 123, 123, '2015-02-13', ''),
+(10, 'mensaje a robin', 'asdnlasd aslkd aslkdskld', 123, 456, '2015-02-13', ''),
+(11, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 123, '2015-02-13', ''),
+(12, 'mensaje a todos camilo y robin', 'mensaje de pruebas a todos', 123, 456, '2015-02-13', ''),
+(13, 'mensje a todos!', 'sssssssssssss', 456, 123, '2015-02-13', ''),
+(14, 'a camilo', 'qqqqqqqqqqqqq', 789, 123, '2015-02-13', ''),
+(15, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 123, '2015-02-13', ''),
+(16, 'a todos desde rambo', 'qqqqqqqqqqqqqqq', 789, 456, '2015-02-13', ''),
+(17, 'RE:a todos desde rambo', 'assssssssssssssssssa aaaaaaaaaaaaaaaaaaasssssssss aaaasssss', 123, 789, '2015-02-17', ''),
+(0, 'RE:mensaje 2', 'lgun mensaje\n\n__________________________\n        Otro mensaje mas de prueba.', 123, 123, '2015-02-20', '');
 
 -- --------------------------------------------------------
 
@@ -171,6 +173,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `clave` varchar(20) COLLATE utf8_spanish_ci NOT NULL COMMENT 'Clave',
   `rol` smallint(6) NOT NULL COMMENT 'Rol',
   `empresa` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Empresa',
+  `cargo` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `correo` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `telefono` int(20) NOT NULL,
+  `aprobado` varchar(1) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabla de usuarios';
 
@@ -178,9 +184,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`cedula`, `nombres`, `apellidos`, `usuario`, `clave`, `rol`, `empresa`) VALUES
-(123, 'camilo', 'rodriguez', 'camilo', '123', 1, 'bla'),
-(456, 'daniel', 'hernandez', 'daniel', '456', 0, 'bla');
+INSERT INTO `usuarios` (`cedula`, `nombres`, `apellidos`, `usuario`, `clave`, `rol`, `empresa`, `cargo`, `correo`, `telefono`, `aprobado`) VALUES
+(123, 'camilo', 'rodriguez', 'camilo', '123', 1, 'bla', '', '', 0, ''),
+(456, 'daniel', 'hernandez', 'daniel', '456', 0, 'bla', '', '', 0, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

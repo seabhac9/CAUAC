@@ -1,7 +1,6 @@
 <?php
 	require_once('conexionDB.php');
-	require("PHPMailer/class.phpmailer.php");
-	//error_reporting(E_ALL);
+	error_reporting(E_ALL);
 	
 	$conn = new ConexionDB;
 	$conn->conectarDB();
@@ -31,25 +30,20 @@
 					"VALUES ($cedula, '$nombres', '$apellidos', '$usuario', '$clave', 0, '$empresa','$cargo','$correo', $telefono,'n');";		
 		$retval = mysql_query( $sql, $conn->getConexionDB() );
 
+$your_email = "horlock69@gmail.com";
 
-       //envio del correo
-		$your_email = $_GET['correo'];
-
-		$headers= "From: Cauac\r\n";
-		$headers.='Content-type: text/html; charset=utf-8';
-		if (mail($your_email, 'Validación cuenta',  'aqui va cualquier mensaje a ser enviado', $headers))
-		header("Location: ../index.php?userExist=no");
-		else 'error';
+$headers= "From: Cauac <cauac@cauac.com>\r\n";
+$headers.='Content-type: text/html; charset=utf-8';
+mail($your_email, 'Enlace de Verificación cuenta',  "
+<html>
+<head>
+ <title>Mensaje de Contacto</title>
+</head>
+<body>
+	Haz creado una cuenta en Cauac, por favor da click en el siguiente enlace para que tu cuenta sea activada y puedas ingresar<br><br>
+	<a href='#'>http://www.cauac.co/codigodeverificacion...algo</a>
+</body>
+</html>" , $headers);
 		//fin de envio del correo
-
-
-		// header("Location: ../index.php?userExist=no");
-
-	// if(enviar_correo('ancal_999@hotmail.com', 'contenido email', 'pruebas email'))
-	// 	header("Location: ../index.php?userExist=no");
-	// else
-	// 	echo ":(";
-    }
-
-	$conn->desconectarDB();	
+		header("Location: ../index.php?userExist=no");
 ?>

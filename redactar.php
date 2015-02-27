@@ -46,7 +46,7 @@
 	<ul class="redactMenu nav nav-pills "> 
 		<li role="presentation"><button type="button" class="btn-info" id="fileSelect">Adjuntar Archivo</button></li>
   	</ul>
-	<div id="fileList">Â¡No se han seleccionado archivos!</div>
+	<div id="fileList">¡No se han seleccionado archivos!</div>
 	<input type="hidden" name="emisor" id="emisor" value="<?php echo $cedula ?>">
 	
 </form>

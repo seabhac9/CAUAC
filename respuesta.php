@@ -21,7 +21,7 @@
           <li role="presentation">
             <input type="file" name="fileElem" id="fileElem" style="display:none" onchange="handleFile(this.files)"/>
             <button type="button" class="btn-info" id="fileSelect">Adjuntar Archivo</button>
-          <div id="fileList">Â¡No se han seleccionado archivos!</div>
+          <div id="fileList">¡No se han seleccionado archivos!</div>
         </li>
 		</ul>
         Mensaje de Respuesta:<br>
@@ -30,7 +30,7 @@
     <ul class="redactMenu nav nav-pills "> 
         <li role="presentation"><button type="button" class="btn-info" id="fileSelect">Adjuntar Archivo</button></li>
     </ul>
-    <div id="fileList">Â¡No se han seleccionado archivos!</div>
+    <div id="fileList">¡No se han seleccionado archivos!</div>
         <br>
         Mensaje Recibido:<br>
         <textarea id="txtAnterior" class="form-control" rows="8" required placeholder='Respuesta' disabled>__________________________

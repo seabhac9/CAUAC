@@ -22,7 +22,8 @@
 	//validacion que no se cree el mismo loggin de usuario.
 	if(mysql_num_rows($retval) > 0)
 	{
-		header("Location: ../index.php?userExist=si");
+		echo"<script language='javascript'>window.location='../index.php?userExist=si'</script>;";
+		// header("Location: ../index.php?userExist=si");
 	}
 	else
 	{
@@ -34,7 +35,7 @@ $your_email = "horlock69@gmail.com";
 
 $headers= "From: Cauac <cauac@cauac.com>\r\n";
 $headers.='Content-type: text/html; charset=utf-8';
-mail($your_email, 'Enlace de Verificación cuenta',  "
+mail($your_email, 'Enlace de Verificaci�n cuenta',  "
 <html>
 <head>
  <title>Mensaje de Contacto</title>
@@ -45,5 +46,6 @@ mail($your_email, 'Enlace de Verificación cuenta',  "
 </body>
 </html>" , $headers);
 		//fin de envio del correo
-		header("Location: ../index.php?userExist=no");
+		echo"<script language='javascript'>window.location='../index.php?userExist=no'</script>;";
+		// header("Location: ../index.php?userExist=no");
 ?>

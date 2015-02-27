@@ -1,12 +1,12 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>    
+<head> 
+<meta charset="UTF-8 ISO-8859-1">   
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/prefix.js"></script>    
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="js/prefix.js"></script> 
     <title></title>
 </head>
 <body>
@@ -17,9 +17,10 @@
             <?php
             if(isset($_GET['cerrar']))
             {
-                session_start();
+                ob_start();
                 session_destroy();
-                header("location: index.php");
+                echo"<script language='javascript'>window.location='index.php'</script>;";
+                // header("location: index.php");
             }
 
             if (isset($_GET["errorusuario"])){
@@ -37,7 +38,7 @@
                 echo '<b>El usuario ya existe</b>';
                 }
                 else{
-                    echo '<b>Registro satisfactorio, Un correo ser√° enviado a su em@il con el link de verificaci√≥n para que pueda ingresar.</b>';
+                    echo '<b>Registro satisfactorio, Un correo ser· enviado a su em@il con el link de verificaciÛn para que pueda ingresar.</b>';
                 } 
             }          
             //     else

@@ -3,14 +3,14 @@ include("classes/seguridad.php");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>    
+<head> 
+<meta charset="UTF-8 ISO-8859-1">      
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/prefix.js"></script>
     <script src="js/functions.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
 <body>

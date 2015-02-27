@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>    
+<head>
+    <meta charset="UTF-8 ISO-8859-1">
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/prefix.js"></script>
-    <script src="js/functions.js"></script>    
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="js/functions.js"></script>  
     <title></title>
-
  <?php
 
 /** Validate captcha */
@@ -23,7 +22,8 @@ if (!empty($_REQUEST['captcha'])) {
   else {
     $captcha_message = "Valid captcha";
     $style = "background-color: #CCFF99";
-    header("Location: classes/registrar.php?name=" . $_POST['name'] . "&lastName=" . $_POST['lastName'] . "&cedula=" . $_POST['cedula'] . "&bussines=" . $_POST['bussines'] . "&user=" . $_POST['user'] . "&pass=". $_POST['pass']. "&cargo=". $_POST['cargo']. "&correo=". $_POST['correo'] . "&telefono=". $_POST['telefono']);
+    echo"<script language='javascript'>window.location='classes/registrar.php?name=" . $_POST['name'] . "&lastName=" . $_POST['lastName'] . "&cedula=" . $_POST['cedula'] . "&bussines=" . $_POST['bussines'] . "&user=" . $_POST['user'] . "&pass=". $_POST['pass']. "&cargo=". $_POST['cargo']. "&correo=". $_POST['correo'] . "&telefono=". $_POST['telefono']."</script>;";
+    // header("Location: classes/registrar.php?name=" . $_POST['name'] . "&lastName=" . $_POST['lastName'] . "&cedula=" . $_POST['cedula'] . "&bussines=" . $_POST['bussines'] . "&user=" . $_POST['user'] . "&pass=". $_POST['pass']. "&cargo=". $_POST['cargo']. "&correo=". $_POST['correo'] . "&telefono=". $_POST['telefono']);
   }
 }
 ?>
@@ -43,8 +43,8 @@ if (!empty($_REQUEST['captcha'])) {
                 <input type="text" class="form-control" id="lastName" name="lastName" required="required" placeholder="Apellidos" value="<?php if( isset($_POST['lastName']) ) echo $_POST['lastName']; else echo'';  ?>">
               </div>
               <div class="form-group">                
-                <!-- <label for="cedula">CÃ©dula</label> -->
-                <input type="number" class="form-control" id="cedula" name="cedula" required="required" placeholder="CÃ©dula" value="<?php if( isset($_POST['cedula']) ) echo $_POST['cedula']; else echo'';  ?>">
+                <!-- <label for="cedula">Cédula</label> -->
+                <input type="number" class="form-control" id="cedula" name="cedula" required="required" placeholder="Cédula" value="<?php if( isset($_POST['cedula']) ) echo $_POST['cedula']; else echo'';  ?>">
               </div>
               <div class="form-group">                
                 <!-- <label for="bussines">Empresa</label> -->
@@ -59,16 +59,16 @@ if (!empty($_REQUEST['captcha'])) {
                 <input type="email" class="form-control" id="correo" name="correo" required="required" placeholder="Correo@electronico" value="<?php if( isset($_POST['correo']) ) echo $_POST['correo']; else echo'';  ?>">
               </div>
               <div class="form-group">                
-                <!-- <label for="tel">TelÃ©fono</label> -->
-                <input type="tel" class="form-control" id="telefono" name="telefono" required="required" placeholder="TelÃ©fono" value="<?php if( isset($_POST['telefono']) ) echo $_POST['telefono']; else echo'';  ?>">
+                <!-- <label for="tel">Teléfono</label> -->
+                <input type="tel" class="form-control" id="telefono" name="telefono" required="required" placeholder="Teléfono" value="<?php if( isset($_POST['telefono']) ) echo $_POST['telefono']; else echo'';  ?>">
               </div>
               <div class="form-group">                
                 <!-- <label for="user">Usuario</label> -->
                 <input type="text" class="form-control" id="user" name="user" required="required" placeholder="Usuario" value="<?php if( isset($_POST['user']) ) echo $_POST['user']; else echo'';  ?>">
               </div>
               <div class="form-group">                
-                <!-- <label for="pass">ContraseÃ±a</label> -->
-                <input type="password" class="form-control" id="pass" name="pass" required="required" placeholder="ContraseÃ±a">
+                <!-- <label for="pass">Contraseña</label> -->
+                <input type="password" class="form-control" id="pass" name="pass" required="required" placeholder="Contraseña">
               </div> 
               <!-- Button trigger modal -->
 <!-- Modal -->
@@ -77,7 +77,7 @@ if (!empty($_REQUEST['captcha'])) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">PÃ³liticas de habeas data</h4>
+        <h4 class="modal-title" id="myModalLabel">Póliticas de habeas data</h4>
       </div>
       <div class="modal-body">
         Curabitur efficitur leo vitae mi rhoncus, ac placerat augue tincidunt. Donec sit amet dolor eu massa sodales mattis sit amet vel nunc. Sed mollis felis id elit porttitor, eget rhoncus enim fermentum. Quisque ullamcorper interdum sapien, non finibus ante semper eget. Pellentesque vulputate purus quis nisl feugiat, eget mattis ex tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis purus porta, commodo ligula sed, tincidunt nisi. Sed rhoncus nisl eu eros volutpat faucibus. In at commodo diam. Cras vehicula ligula non sapien cursus, sit amet dictum turpis faucibus. Suspendisse in mollis quam. Cras facilisis metus nec sollicitudin maximus. Proin tristique metus posuere, aliquet velit id, volutpat justo. Ut scelerisque magna id nisi sagittis, eget molestie lorem accumsan. Morbi nisl leo, viverra ultricies lorem at, tempor consectetur massa. Donec non magna placerat, auctor sem quis, semper erat.
@@ -90,7 +90,7 @@ if (!empty($_REQUEST['captcha'])) {
     </div>
   </div>
 </div>
-              <a class="text-sucess" style='cursor:pointer;' data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Dando click en Registrar usted acepta nuestra polÃ­tica de habeas data</a><br /><br />
+              <a class="text-sucess" style='cursor:pointer;' data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Dando click en Registrar usted acepta nuestra política de habeas data</a><br /><br />
              
 <?php
 if (!empty($_REQUEST['captcha'])) {
@@ -112,7 +112,7 @@ HTML;
 <input type="text" name="captcha" id="captcha" autocomplete="off" required /><br/> <br />
 <a class='btn btn-default' onclick="document.getElementById('captcha').src='captcha.php?'+Math.random();
     document.getElementById('captcha-form').focus();"
-    id="change-image">Â¿No es legible? Cambie la Palabra</a><br/><br/>
+    id="change-image">¿No es legible? Cambie la Palabra</a><br/><br/>
  <button type="submit" class="btn btn-primary">Registrar</button>          
              
                          

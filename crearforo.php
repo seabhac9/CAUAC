@@ -32,7 +32,7 @@
 	  <li role="presentation"><button type="button" class="btn-info" id="youtubeSelect" onClick="adjuntarVideo()">Adjuntar Enlace Youtube</a></li>
 	  <li role="presentation"><input type="text" class="form-control" id="videoURL" placeholder="url de video de youtube..." style="width:350px;display:none"  ></li>
     </ul>
-	<div id="fileList">Â¡No se han seleccionado archivos!</div>
+	<div id="fileList">¡No se han seleccionado archivos!</div>
 
 	<div class="col-xs-3">
 		<h3 class="text-primary">Agregar a:</h3>

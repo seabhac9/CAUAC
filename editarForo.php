@@ -59,7 +59,7 @@
 	</div>	
   </div>
   <input type="hidden" name="codigo" id="codigo" value="<?php echo $codigo; ?>">
-<button type="submit" class="btn btn-primary" onClick="editarForo();">Terminar EdiciÃ³n</button>
+<button type="submit" class="btn btn-primary" onClick="editarForo();">Terminar Edición</button>
 
 <button type="button" class="btn btn-warning" onclick="clearCrearForo();">Limpiar</button>
 

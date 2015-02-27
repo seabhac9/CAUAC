@@ -1,4 +1,4 @@
-Ôªø<?php
+<?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 	require_once('ConexionDB.php');
@@ -16,7 +16,7 @@ ini_set('display_errors', '1');
 
 	//Si el registro existe valida e ingresa.
 	if (mysql_num_rows($retval) > 0 && $row["aprobado"] == 's'){
-	    //usuario y contrase√±a v√°lidos
+	    //usuario y contraseÒa v·lidos
 	    //defino una sesion y guardo datos
 	    session_start();
 	    $_SESSION["autentificado"]= "SI";
@@ -24,9 +24,11 @@ ini_set('display_errors', '1');
 	    $_SESSION["nombres"] = $row["nombres"];
 	    $_SESSION["apellidos"] = $row["apellidos"];
 	    $_SESSION["rol"] = $row["rol"];
-	    header ("Location: ../cauac.php");
+	    echo"<script language='javascript'>window.location='../cauac.php'</script>;";
+	    // header ("Location: ../cauac.php");
 	}else {
 	    //si no existe le mando otra vez a la portada
-	    header("Location: ../index.php?errorusuario=si");
+	    echo"<script language='javascript'>window.location='../index.php?errorusuario=si'</script>;";
+	    // header("Location: ../index.php?errorusuario=si");
 	}
 ?>

@@ -10,9 +10,8 @@
     <script src="js/functions.js"></script>  
     <title></title>
  <?php
-
 /** Validate captcha */
-session_start();
+ob_start();
 
 if (!empty($_REQUEST['captcha'])) {
   if (empty($_SESSION['captcha']) || trim(strtolower($_REQUEST['captcha'])) != $_SESSION['captcha']) {

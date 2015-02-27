@@ -1,6 +1,6 @@
 <?php 
 	include("classes/seguridad.php");
-	include('classes/conexionDB.php');
+	include("classes/ConexionDB.php");
 	//error_reporting(E_ALL);
 	$varRol = $_SESSION["rol"];
 ?>

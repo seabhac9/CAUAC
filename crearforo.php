@@ -1,6 +1,6 @@
 <?php 
 	include("classes/seguridad.php");
-	require_once('classes/conexionDB.php');
+	require_once('classes/ConexionDB.php');
 	//error_reporting(E_ALL);
 
 	$conn = new ConexionDB;

@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 	include("classes/seguridad.php");
 	include("classes/ConexionDB.php");
 	//error_reporting(E_ALL);

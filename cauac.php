@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include("classes/seguridad.php");
 ?>
 <!DOCTYPE html>

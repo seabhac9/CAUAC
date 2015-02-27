@@ -1,4 +1,4 @@
-<h2 class="orange">Mensajes</h2>
+﻿<h2 class="orange">Mensajes</h2>
 <ul>
 	<?php 
 		include("classes/seguridad.php");
